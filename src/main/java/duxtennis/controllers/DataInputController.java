@@ -112,10 +112,21 @@ public class DataInputController extends Controller {
   }
 
   /**
-   * TODO.
+   * Makes the current view invisible, retrieves and applies
+   * the players skill points from the sliders and makes the
+   * next view visible.
    */
   public void continueButtonEvent() {
-    // TODO
+    hideView();
+
+    for (int i = 0; i < 2; i++) {
+      Main.getTournament()
+          .getPlayers()
+          .get(i)
+          .setSkillPoints(((DataInputView) getView()).getSliders()
+                                                     .get(i)
+                                                     .getValue());
+    }
   }
 
   // ---------------------------------------- Private methods -----------------------------------

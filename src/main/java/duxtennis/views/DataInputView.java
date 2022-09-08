@@ -133,7 +133,7 @@ public class DataInputView extends View {
     );
 
     continueButton.addActionListener(e ->
-        ((DataInputController) Main.getController(Views.DATA_INPUT)).backButtonEvent()
+        ((DataInputController) Main.getController(Views.DATA_INPUT)).continueButtonEvent()
     );
 
     masterPanel.add(continueButton, GROWX_SPAN);
@@ -180,9 +180,7 @@ public class DataInputView extends View {
 
           return;
         } finally {
-          continueButton.setEnabled(textFields.stream()
-                                              .noneMatch(f -> f.getText()
-                                                               .equals("")));
+          continueButton.setEnabled(namesSetted());
         }
       });
 
@@ -239,5 +237,21 @@ public class DataInputView extends View {
     masterPanel.add(new JSeparator(), GROWX_SPAN);
     masterPanel.add(setsAmountLabel);
     masterPanel.add(comboBox, GROWX);
+  }
+
+  /**
+   * Checks whether the tournament and the players names are setted.
+   *
+   * @return Whether the tournament and the players names are setted.
+   */
+  private boolean namesSetted() {
+    return !Main.getTournament()
+                .getName()
+                .equals("")
+           && Main.getTournament()
+                  .getPlayers()
+                  .stream()
+                  .noneMatch(p -> p.getName()
+                                   .equals(""));
   }
 }
