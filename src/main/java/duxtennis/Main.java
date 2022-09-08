@@ -104,7 +104,7 @@ public final class Main {
    * Creates an empty tournament.
    */
   private static final void setupTournament() {
-    tournament = new Tournament(new Player(""), new Player(""), "");
+    tournament = new Tournament(new Player(""), new Player(""), "", 0);
   }
 
   /**

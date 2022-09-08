@@ -14,6 +14,8 @@ public class Tournament {
 
   // ---------------------------------------- Private fields ------------------------------------
 
+  private int setsAmount;
+
   private Player player1;
   private Player player2;
 
@@ -24,20 +26,31 @@ public class Tournament {
   /**
    * Tournament constructor.
    *
-   * @param player1 Player 1.
-   * @param player2 Player 2.
-   * @param name    The tournament name.
+   * @param player1    Player 1.
+   * @param player2    Player 2.
+   * @param name       The tournament name.
+   * @param setsAmount The tournament sets amount.
    */
-  public Tournament(Player player1, Player player2, String name) {
+  public Tournament(Player player1, Player player2, String name, int setsAmount) {
     this.player1 = player1;
     this.player2 = player2;
 
     setName(name);
+    setMatchSetsAmount(setsAmount);
   }
 
   // ---------------------------------------- Public methods ------------------------------------
 
   // ---------------------------------------- Getters -------------------------------------------
+
+  /**
+   * Gets the tournament sets amount.
+   *
+   * @return The tournament sets amount.
+   */
+  public int getSetsAmount() {
+    return setsAmount;
+  }
 
   /**
    * Gets the tournament players.
@@ -66,5 +79,14 @@ public class Tournament {
    */
   public void setName(String name) {
     this.name = name;
+  }
+
+  /**
+   * Updates the tournament sets amount.
+   *
+   * @param setsAmount The tournament sets amount.
+  */
+  public void setMatchSetsAmount(int setsAmount) {
+    this.setsAmount = setsAmount;
   }
 }

@@ -127,6 +127,10 @@ public class DataInputController extends Controller {
                                                      .get(i)
                                                      .getValue());
     }
+
+    Main.getTournament()
+        .setMatchSetsAmount(3 + (2 * ((DataInputView) getView()).getComboBox()
+                                                                .getSelectedIndex()));
   }
 
   // ---------------------------------------- Private methods -----------------------------------
