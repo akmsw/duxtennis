@@ -93,9 +93,6 @@
             <artifactId>maven-jar-plugin</artifactId>
             <version>${maven-jar-plugin.version}</version>
             <configuration>
-                <excludes>
-                    <exclude>**/readme/*</exclude>
-                </excludes>
                 <archive>
                     <manifest>
                         <mainClass>duxtennis.Main</mainClass>
