@@ -65,6 +65,7 @@ public class DataInputController extends Controller {
    */
   public void backButtonEvent() {
     resetView();
+    clearNames();
 
     Main.getController(Views.MAIN_MENU)
         .showView();
@@ -113,8 +114,8 @@ public class DataInputController extends Controller {
 
   /**
    * Makes the current view invisible, retrieves and applies
-   * the players skill points from the sliders and makes the
-   * next view visible.
+   * the players skill points from the sliders, updates the
+   * tournament match sets amount and makes the next view visible.
    */
   public void continueButtonEvent() {
     hideView();
@@ -134,6 +135,18 @@ public class DataInputController extends Controller {
   }
 
   // ---------------------------------------- Private methods -----------------------------------
+
+  /**
+   * Clears the players and tournament names.
+   */
+  private void clearNames() {
+    Main.getTournament()
+        .getPlayers()
+        .forEach(p -> p.setName(""));
+
+    Main.getTournament()
+        .setName("");
+  }
 
   /**
    * Checks if the given string matches the string validation regex.
