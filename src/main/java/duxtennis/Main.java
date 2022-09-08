@@ -19,10 +19,6 @@ import javax.swing.JOptionPane;
  */
 public final class Main {
 
-  // ---------------------------------------- Private constants ---------------------------------
-
-  private static final String ERROR_MESSAGE_TITLE = "¡Error!";
-
   // ---------------------------------------- Public constants ----------------------------------
 
   public static final int MAX_NAME_LEN = 10;
@@ -30,6 +26,10 @@ public final class Main {
   public static final String IMG_PATH = "img/";
   public static final String NAMES_VALIDATION_REGEX = "[a-z A-ZÁÉÍÓÚáéíóúñÑ]+";
   public static final String PROGRAM_TITLE = "DuxTennis";
+
+  // ---------------------------------------- Private constants ---------------------------------
+
+  private static final String ERROR_MESSAGE_TITLE = "¡Error!";
 
   // ---------------------------------------- Private fields ------------------------------------
 

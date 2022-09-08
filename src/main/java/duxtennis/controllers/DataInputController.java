@@ -13,28 +13,48 @@ import duxtennis.views.DataInputView;
  */
 public class DataInputController extends Controller {
 
+  // ---------------------------------------- Public constants ----------------------------------
+
+  public static final int SLIDER_INI = 50;
+  public static final int SLIDER_MIN = 0;
+  public static final int SLIDER_MAX = 100;
+  public static final int SLIDER_SPACING_MAJOR = 25;
+  public static final int SLIDER_SPACING_MINOR = 5;
+
   // ---------------------------------------- Constructor ---------------------------------------
 
   /**
-   * Builds the names input view controller.
+   * Builds the data input view controller.
    *
-   * @param namesInputView View to control.
+   * @param dataInputView View to control.
    */
-  public DataInputController(DataInputView namesInputView) {
-    super(namesInputView);
+  public DataInputController(DataInputView dataInputView) {
+    super(dataInputView);
   }
 
   // ---------------------------------------- Public methods ------------------------------------
 
   /**
-   * Resets the controlled view to its default values
-   * and makes it invisible.
+   * Makes the controlled view invisible and resets it to its default values.
    */
   @Override
   public void resetView() {
     hideView();
 
-    // TODO
+    ((DataInputView) getView()).getPlayer1Slider()
+                               .setValue(SLIDER_INI);
+
+    ((DataInputView) getView()).getPlayer1TextField()
+                               .setText("");
+
+    ((DataInputView) getView()).getPlayer2TextField()
+                               .setText("");
+
+    ((DataInputView) getView()).getTournamentTextField()
+                               .setText("");
+
+    ((DataInputView) getView()).getContinueButton()
+                               .setEnabled(false);
   }
 
   /**

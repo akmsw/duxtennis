@@ -92,7 +92,7 @@ public abstract class Controller {
   // ---------------------------------------- Abstract protected methods ------------------------
 
   /**
-   * Resets the controlled view to its default values.
+   * Makes the controlled view invisible and resets it to its default values.
    */
   protected abstract void resetView();
 }

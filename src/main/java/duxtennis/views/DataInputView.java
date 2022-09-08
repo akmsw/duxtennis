@@ -24,12 +24,6 @@ public class DataInputView extends View {
 
   // ---------------------------------------- Private constants ---------------------------------
 
-  private static final int SLIDER_INI = 50;
-  private static final int SLIDER_MIN = 0;
-  private static final int SLIDER_MAX = 100;
-  private static final int SLIDER_SPACING_MAJOR = 25;
-  private static final int SLIDER_SPACING_MINOR = 5;
-
   private static final String FRAME_TITLE = "Ingreso de parámetros";
   private static final String GROWX = "growx";
   private static final String GROWX_SPAN = "growx, span";
@@ -50,7 +44,7 @@ public class DataInputView extends View {
   // ---------------------------------------- Constructor ---------------------------------------
 
   /**
-   * Builds the names input view.
+   * Builds the data input view.
    */
   public DataInputView() {
     initializeInterface();
@@ -186,18 +180,22 @@ public class DataInputView extends View {
     JLabel player1SliderLabel = new JLabel("Probabilidad de que gane el jugador #1");
     JLabel player2SliderLabel = new JLabel("Probabilidad de que gane el jugador #2");
 
-    player1Slider = new JSlider(SwingConstants.HORIZONTAL, SLIDER_MIN, SLIDER_MAX, SLIDER_INI);
-    player2Slider = new JSlider(SwingConstants.HORIZONTAL, SLIDER_MIN, SLIDER_MAX, SLIDER_INI);
+    player1Slider = new JSlider(SwingConstants.HORIZONTAL, DataInputController.SLIDER_MIN,
+                                DataInputController.SLIDER_MAX, DataInputController.SLIDER_INI);
+    player2Slider = new JSlider(SwingConstants.HORIZONTAL, DataInputController.SLIDER_MIN,
+                                DataInputController.SLIDER_MAX, DataInputController.SLIDER_INI);
 
-    player1Slider.setMajorTickSpacing(SLIDER_SPACING_MAJOR);
-    player1Slider.setMinorTickSpacing(SLIDER_SPACING_MINOR);
+    player1Slider.setMajorTickSpacing(DataInputController.SLIDER_SPACING_MAJOR);
+    player1Slider.setMinorTickSpacing(DataInputController.SLIDER_SPACING_MINOR);
     player1Slider.setPaintTicks(true);
     player1Slider.setPaintLabels(true);
+    player1Slider.addChangeListener(e -> player2Slider.setValue(100 - player1Slider.getValue()));
 
-    player2Slider.setMajorTickSpacing(SLIDER_SPACING_MAJOR);
-    player2Slider.setMinorTickSpacing(SLIDER_SPACING_MINOR);
+    player2Slider.setMajorTickSpacing(DataInputController.SLIDER_SPACING_MAJOR);
+    player2Slider.setMinorTickSpacing(DataInputController.SLIDER_SPACING_MINOR);
     player2Slider.setPaintTicks(true);
     player2Slider.setPaintLabels(true);
+    player2Slider.addChangeListener(e -> player1Slider.setValue(100 - player2Slider.getValue()));
 
     masterPanel.add(player1SliderLabel, GROWX_SPAN);
     masterPanel.add(player1Slider, GROWX_SPAN);
@@ -206,15 +204,5 @@ public class DataInputView extends View {
 
     masterPanel.add(player2SliderLabel, GROWX_SPAN);
     masterPanel.add(player2Slider, GROWX_SPAN);
-
-    addSlidersChangeListeners();
-  }
-
-  /**
-   * Sets up the sliders change listeners.
-   */
-  private void addSlidersChangeListeners() {
-    player1Slider.addChangeListener(e -> player2Slider.setValue(100 - player1Slider.getValue()));
-    player2Slider.addChangeListener(e -> player1Slider.setValue(100 - player2Slider.getValue()));
   }
 }
