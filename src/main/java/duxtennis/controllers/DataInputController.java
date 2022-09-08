@@ -61,8 +61,7 @@ public class DataInputController extends Controller {
    * 'Back' button event handler.
    *
    * <p>Resets the controlled view to its default values,
-   * makes the controlled view invisible and shows the
-   * main menu view.
+   * and shows the main menu view.
    */
   public void backButtonEvent() {
     resetView();

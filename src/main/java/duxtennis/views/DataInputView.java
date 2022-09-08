@@ -1,6 +1,7 @@
 package duxtennis.views;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -28,9 +29,16 @@ public class DataInputView extends View {
   private static final String GROWX = "growx";
   private static final String GROWX_SPAN = "growx, span";
 
+  private static final String[] OPTIONS_COMBOBOX = {
+    "Mejor de 3",
+    "Mejor de 5"
+  };
+
   // ---------------------------------------- Private fields ------------------------------------
 
   private JButton continueButton;
+
+  private JComboBox<String> comboBox;
 
   private JPanel masterPanel;
 
@@ -61,6 +69,15 @@ public class DataInputView extends View {
    */
   public JButton getContinueButton() {
     return continueButton;
+  }
+
+  /**
+   * Gets the combobox.
+   *
+   * @return The combobox.
+   */
+  public JComboBox<String> getComboBox() {
+    return comboBox;
   }
 
   /**
@@ -122,6 +139,7 @@ public class DataInputView extends View {
     setResizable(false);
     addTextFields();
     addSliders();
+    addComboBox();
     addButtons();
     add(masterPanel);
     pack();
@@ -182,14 +200,15 @@ public class DataInputView extends View {
 
     player1Slider = new JSlider(SwingConstants.HORIZONTAL, DataInputController.SLIDER_MIN,
                                 DataInputController.SLIDER_MAX, DataInputController.SLIDER_INI);
-    player2Slider = new JSlider(SwingConstants.HORIZONTAL, DataInputController.SLIDER_MIN,
-                                DataInputController.SLIDER_MAX, DataInputController.SLIDER_INI);
 
     player1Slider.setMajorTickSpacing(DataInputController.SLIDER_SPACING_MAJOR);
     player1Slider.setMinorTickSpacing(DataInputController.SLIDER_SPACING_MINOR);
     player1Slider.setPaintTicks(true);
     player1Slider.setPaintLabels(true);
     player1Slider.addChangeListener(e -> player2Slider.setValue(100 - player1Slider.getValue()));
+
+    player2Slider = new JSlider(SwingConstants.HORIZONTAL, DataInputController.SLIDER_MIN,
+                                DataInputController.SLIDER_MAX, DataInputController.SLIDER_INI);
 
     player2Slider.setMajorTickSpacing(DataInputController.SLIDER_SPACING_MAJOR);
     player2Slider.setMinorTickSpacing(DataInputController.SLIDER_SPACING_MINOR);
@@ -204,5 +223,19 @@ public class DataInputView extends View {
 
     masterPanel.add(player2SliderLabel, GROWX_SPAN);
     masterPanel.add(player2Slider, GROWX_SPAN);
+  }
+
+  /**
+   * Creates and places the game sets amount combobox.
+   */
+  private void addComboBox() {
+    JLabel setsAmountLabel = new JLabel("Cantidad de sets:");
+
+    comboBox = new JComboBox<>(OPTIONS_COMBOBOX);
+
+    comboBox.setSelectedIndex(0);
+
+    masterPanel.add(setsAmountLabel);
+    masterPanel.add(comboBox, GROWX);
   }
 }
