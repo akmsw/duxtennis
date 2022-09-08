@@ -245,10 +245,10 @@ public class DataInputView extends View {
    * @return Whether the tournament and the players names are setted.
    */
   private boolean namesSetted() {
-    return !Main.getTournament()
-                .getName()
+    return !Main.getMatch()
+                .getTournamentName()
                 .equals("")
-           && Main.getTournament()
+           && Main.getMatch()
                   .getPlayers()
                   .stream()
                   .noneMatch(p -> p.getName()

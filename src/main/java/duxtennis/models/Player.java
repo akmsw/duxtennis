@@ -11,6 +11,8 @@ public class Player {
 
   // ---------------------------------------- Private fields ------------------------------------
 
+  private boolean serves;
+
   private int skillPoints; // 0 to 100
 
   private String name;
@@ -25,11 +27,21 @@ public class Player {
   public Player(String name) {
     setName(name);
     setSkillPoints(0);
+    setServes(false);
   }
 
   // ---------------------------------------- Public methods ------------------------------------
 
   // ---------------------------------------- Getters -------------------------------------------
+
+  /**
+   * Gets whether the player serves or not in the game.
+   *
+   * @return Whether the player serves or not in the game.
+   */
+  public boolean serves() {
+    return serves;
+  }
 
   /**
    * Gets the player's skill points.
@@ -52,6 +64,15 @@ public class Player {
   // ---------------------------------------- Setters -------------------------------------------
 
   /**
+   * Updates the player's name.
+   *
+   * @param name The player's new name.
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
    * Updates the player's skill points.
    *
    * @param skillPoints The player's new skill points.
@@ -61,11 +82,11 @@ public class Player {
   }
 
   /**
-   * Updates the player's name.
+   * Updates the player's serving state.
    *
-   * @param name The player's new name.
+   * @param serves Whether the player serves or not in the game.
    */
-  public void setName(String name) {
-    this.name = name;
+  public void setServes(boolean serves) {
+    this.serves = serves;
   }
 }

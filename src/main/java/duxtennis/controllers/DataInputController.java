@@ -96,8 +96,8 @@ public class DataInputController extends Controller {
                .toUpperCase();
 
     if (tfIndex == 0) {
-      Main.getTournament()
-          .setName(text);
+      Main.getMatch()
+          .setTournamentName(text);
 
       return;
     }
@@ -106,7 +106,7 @@ public class DataInputController extends Controller {
       throw new InvalidNameException();
     }
 
-    Main.getTournament()
+    Main.getMatch()
         .getPlayers()
         .get(tfIndex - 1)
         .setName(text);
@@ -115,13 +115,13 @@ public class DataInputController extends Controller {
   /**
    * Makes the current view invisible, retrieves and applies
    * the players skill points from the sliders, updates the
-   * tournament match sets amount and makes the next view visible.
+   * match match sets amount and makes the next view visible.
    */
   public void continueButtonEvent() {
     hideView();
 
     for (int i = 0; i < 2; i++) {
-      Main.getTournament()
+      Main.getMatch()
           .getPlayers()
           .get(i)
           .setSkillPoints(((DataInputView) getView()).getSliders()
@@ -129,7 +129,7 @@ public class DataInputController extends Controller {
                                                      .getValue());
     }
 
-    Main.getTournament()
+    Main.getMatch()
         .setMatchSetsAmount(3 + (2 * ((DataInputView) getView()).getComboBox()
                                                                 .getSelectedIndex()));
   }
@@ -137,15 +137,15 @@ public class DataInputController extends Controller {
   // ---------------------------------------- Private methods -----------------------------------
 
   /**
-   * Clears the players and tournament names.
+   * Clears the players and match names.
    */
   private void clearNames() {
-    Main.getTournament()
+    Main.getMatch()
         .getPlayers()
         .forEach(p -> p.setName(""));
 
-    Main.getTournament()
-        .setName("");
+    Main.getMatch()
+        .setTournamentName("");
   }
 
   /**
@@ -182,7 +182,7 @@ public class DataInputController extends Controller {
    * @return Whether there is already a player with the specified name or not.
    */
   private boolean alreadyExists(String name) {
-    return Main.getTournament()
+    return Main.getMatch()
                .getPlayers()
                .stream()
                .anyMatch(p -> p.getName()

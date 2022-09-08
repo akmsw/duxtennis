@@ -3,8 +3,8 @@ package duxtennis;
 import duxtennis.controllers.Controller;
 import duxtennis.controllers.DataInputController;
 import duxtennis.controllers.MainMenuController;
+import duxtennis.models.Match;
 import duxtennis.models.Player;
-import duxtennis.models.Tournament;
 import duxtennis.models.Views;
 import duxtennis.views.DataInputView;
 import duxtennis.views.MainMenuView;
@@ -37,7 +37,7 @@ public final class Main {
 
   private static Map<Views, Controller> controllersMap;
 
-  private static Tournament tournament;
+  private static Match match;
 
   // ---------------------------------------- Constructor ---------------------------------------
 
@@ -56,7 +56,7 @@ public final class Main {
    * @param args Program arguments (not used yet).
    */
   public static void main(String[] args) {
-    setupTournament();
+    setupMatch();
     setControllers();
 
     ((MainMenuController) getController(Views.MAIN_MENU)).showView();
@@ -88,12 +88,12 @@ public final class Main {
   }
 
   /**
-   * Gets the current tournament.
+   * Gets the current match.
    *
-   * @return The current tournament.
+   * @return The current match.
    */
-  public static Tournament getTournament() {
-    return tournament;
+  public static Match getMatch() {
+    return match;
   }
 
   // ---------------------------------------- Private methods -----------------------------------
@@ -101,10 +101,10 @@ public final class Main {
   // ---------------------------------------- Setters -------------------------------------------
 
   /**
-   * Creates an empty tournament.
+   * Creates an empty match.
    */
-  private static final void setupTournament() {
-    tournament = new Tournament(new Player(""), new Player(""), "", 0);
+  private static final void setupMatch() {
+    match = new Match(new Player(""), new Player(""), "", 0);
   }
 
   /**

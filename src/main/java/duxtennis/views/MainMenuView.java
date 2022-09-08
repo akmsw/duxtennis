@@ -1,14 +1,14 @@
 package duxtennis.views;
 
+import duxtennis.Main;
+import duxtennis.controllers.MainMenuController;
+import duxtennis.models.Views;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import duxtennis.Main;
-import duxtennis.controllers.MainMenuController;
-import duxtennis.models.Views;
 import net.miginfocom.swing.MigLayout;
 
 /**
