@@ -27,12 +27,16 @@ public class DataInputView extends View {
   private static final int SLIDER_INI = 50;
   private static final int SLIDER_MIN = 0;
   private static final int SLIDER_MAX = 100;
+  private static final int SLIDER_SPACING_MAJOR = 25;
+  private static final int SLIDER_SPACING_MINOR = 5;
 
   private static final String FRAME_TITLE = "Ingreso de parámetros";
   private static final String GROWX = "growx";
   private static final String GROWX_SPAN = "growx, span";
 
   // ---------------------------------------- Private fields ------------------------------------
+
+  private JButton continueButton;
 
   private JPanel masterPanel;
 
@@ -50,6 +54,64 @@ public class DataInputView extends View {
    */
   public DataInputView() {
     initializeInterface();
+  }
+
+  // ---------------------------------------- Public methods -------------------------------------
+
+  // ---------------------------------------- Getters -------------------------------------------
+
+  /**
+   * Gets the 'continue' button.
+   *
+   * @return The 'continue' button.
+   */
+  public JButton getContinueButton() {
+    return continueButton;
+  }
+
+  /**
+   * Gets the player 1 skill slider.
+   *
+   * @return The player 1 skill slider.
+   */
+  public JSlider getPlayer1Slider() {
+    return player1Slider;
+  }
+
+  /**
+   * Gets the player 2 skill slider.
+   *
+   * @return The player 2 skill slider.
+   */
+  public JSlider getPlayer2Slider() {
+    return player2Slider;
+  }
+
+  /**
+   * Gets the player 1 name text field.
+   *
+   * @return The player 1 name text field.
+   */
+  public JTextField getPlayer1TextField() {
+    return player1TextField;
+  }
+
+  /**
+   * Gets the player 2 name text field.
+   *
+   * @return The player 2 name text field.
+   */
+  public JTextField getPlayer2TextField() {
+    return player2TextField;
+  }
+
+    /**
+   * Gets the tournament title text field.
+   *
+   * @return The tournament title text field.
+   */
+  public JTextField getTournamentTextField() {
+    return tournamentTextField;
   }
 
   // ---------------------------------------- Protected methods ---------------------------------
@@ -78,7 +140,9 @@ public class DataInputView extends View {
   @Override
   protected void addButtons() {
     JButton backButton = new JButton("Atrás");
-    JButton continueButton = new JButton("Continuar");
+
+    continueButton = new JButton("Continuar");
+    continueButton.setEnabled(false);
 
     backButton.addActionListener(e ->
         ((DataInputController) Main.getController(Views.DATA_INPUT)).backButtonEvent()
@@ -125,13 +189,13 @@ public class DataInputView extends View {
     player1Slider = new JSlider(SwingConstants.HORIZONTAL, SLIDER_MIN, SLIDER_MAX, SLIDER_INI);
     player2Slider = new JSlider(SwingConstants.HORIZONTAL, SLIDER_MIN, SLIDER_MAX, SLIDER_INI);
 
-    player1Slider.setMajorTickSpacing(25);
-    player1Slider.setMinorTickSpacing(10);
+    player1Slider.setMajorTickSpacing(SLIDER_SPACING_MAJOR);
+    player1Slider.setMinorTickSpacing(SLIDER_SPACING_MINOR);
     player1Slider.setPaintTicks(true);
     player1Slider.setPaintLabels(true);
 
-    player2Slider.setMajorTickSpacing(25);
-    player2Slider.setMinorTickSpacing(10);
+    player2Slider.setMajorTickSpacing(SLIDER_SPACING_MAJOR);
+    player2Slider.setMinorTickSpacing(SLIDER_SPACING_MINOR);
     player2Slider.setPaintTicks(true);
     player2Slider.setPaintLabels(true);
 
