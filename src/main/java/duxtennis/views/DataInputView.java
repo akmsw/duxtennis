@@ -180,14 +180,11 @@ public class DataInputView extends View {
 
     masterPanel.add(tournamentLabel);
     masterPanel.add(tournamentTextField, GROWX);
-
     masterPanel.add(new JSeparator(), GROWX_SPAN);
-
     masterPanel.add(player1Label);
     masterPanel.add(player1TextField, GROWX);
     masterPanel.add(player2Label);
     masterPanel.add(player2TextField, GROWX);
-
     masterPanel.add(new JSeparator(), GROWX_SPAN);
   }
 
@@ -218,9 +215,7 @@ public class DataInputView extends View {
 
     masterPanel.add(player1SliderLabel, GROWX_SPAN);
     masterPanel.add(player1Slider, GROWX_SPAN);
-
     masterPanel.add(new JSeparator(), GROWX_SPAN);
-
     masterPanel.add(player2SliderLabel, GROWX_SPAN);
     masterPanel.add(player2Slider, GROWX_SPAN);
   }
@@ -235,6 +230,7 @@ public class DataInputView extends View {
 
     comboBox.setSelectedIndex(0);
 
+    masterPanel.add(new JSeparator(), GROWX_SPAN);
     masterPanel.add(setsAmountLabel);
     masterPanel.add(comboBox, GROWX);
   }
