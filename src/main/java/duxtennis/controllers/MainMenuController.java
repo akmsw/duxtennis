@@ -36,7 +36,7 @@ public class MainMenuController extends Controller {
   public void startButtonEvent() {
     hideView();
 
-    Main.getController(Views.NAMES_INPUT)
+    Main.getController(Views.DATA_INPUT)
         .showView();
   }
 

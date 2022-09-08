@@ -1,8 +1,10 @@
 package duxtennis;
 
 import duxtennis.controllers.Controller;
+import duxtennis.controllers.DataInputController;
 import duxtennis.controllers.MainMenuController;
 import duxtennis.models.Views;
+import duxtennis.views.DataInputView;
 import duxtennis.views.MainMenuView;
 import java.util.EnumMap;
 import java.util.Map;
@@ -22,6 +24,8 @@ public final class Main {
   private static final String ERROR_MESSAGE_TITLE = "¡Error!";
 
   // ---------------------------------------- Public constants ----------------------------------
+
+  public static final int MAX_NAME_LEN = 10;
 
   public static final String IMG_PATH = "img/";
   public static final String NAMES_VALIDATION_REGEX = "[a-z A-ZÁÉÍÓÚáéíóúñÑ]+";
@@ -85,5 +89,8 @@ public final class Main {
 
     Controller mainMenuController = new MainMenuController(new MainMenuView());
     controllersMap.put(Views.MAIN_MENU, mainMenuController);
+
+    Controller dataInputController = new DataInputController(new DataInputView());
+    controllersMap.put(Views.DATA_INPUT, dataInputController);
   }
 }

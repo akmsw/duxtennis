@@ -9,6 +9,6 @@ package duxtennis.models;
  */
 public enum Views {
   MAIN_MENU,
-  NAMES_INPUT,
+  DATA_INPUT,
   RESULTS
 }
