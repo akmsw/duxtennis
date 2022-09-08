@@ -179,6 +179,10 @@ public class DataInputView extends View {
           tf.setText("");
 
           return;
+        } finally {
+          continueButton.setEnabled(textFields.stream()
+                                              .noneMatch(f -> f.getText()
+                                                               .equals("")));
         }
       });
 
