@@ -4,6 +4,13 @@ import duxtennis.Main;
 import duxtennis.models.Views;
 import duxtennis.views.MainMenuView;
 
+/**
+ * Main menu view controller class.
+ *
+ * @author Bonino, Francisco Ignacio.
+ * @version 0.0.1
+ * @since 07/09/2022
+ */
 public class MainMenuController extends Controller {
 
   // ---------------------------------------- Constructor ---------------------------------------

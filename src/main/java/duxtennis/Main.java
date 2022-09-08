@@ -3,6 +3,8 @@ package duxtennis;
 import duxtennis.controllers.Controller;
 import duxtennis.controllers.DataInputController;
 import duxtennis.controllers.MainMenuController;
+import duxtennis.models.Player;
+import duxtennis.models.Tournament;
 import duxtennis.models.Views;
 import duxtennis.views.DataInputView;
 import duxtennis.views.MainMenuView;
@@ -35,6 +37,8 @@ public final class Main {
 
   private static Map<Views, Controller> controllersMap;
 
+  private static Tournament tournament;
+
   // ---------------------------------------- Constructor ---------------------------------------
 
   /**
@@ -52,6 +56,7 @@ public final class Main {
    * @param args Program arguments (not used yet).
    */
   public static void main(String[] args) {
+    setupTournament();
     setControllers();
 
     ((MainMenuController) getController(Views.MAIN_MENU)).showView();
@@ -82,8 +87,29 @@ public final class Main {
     return controllersMap.get(view);
   }
 
+  /**
+   * Gets the current tournament.
+   *
+   * @return The current tournament.
+   */
+  public static Tournament getTournament() {
+    return tournament;
+  }
+
+  // ---------------------------------------- Private methods -----------------------------------
+
   // ---------------------------------------- Setters -------------------------------------------
 
+  /**
+   * Creates an empty tournament.
+   */
+  private static final void setupTournament() {
+    tournament = new Tournament(new Player(""), new Player(""), "");
+  }
+
+  /**
+   * Sets the views controllers.
+   */
   private static final void setControllers() {
     controllersMap = new EnumMap<>(Views.class);
 

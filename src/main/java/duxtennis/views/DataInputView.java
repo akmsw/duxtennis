@@ -1,5 +1,11 @@
 package duxtennis.views;
 
+import duxtennis.Main;
+import duxtennis.controllers.DataInputController;
+import duxtennis.models.Views;
+import java.util.ArrayList;
+import java.util.List;
+import javax.naming.InvalidNameException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -9,9 +15,6 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import duxtennis.Main;
-import duxtennis.controllers.DataInputController;
-import duxtennis.models.Views;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -42,12 +45,8 @@ public class DataInputView extends View {
 
   private JPanel masterPanel;
 
-  private JSlider player1Slider;
-  private JSlider player2Slider;
-
-  private JTextField player1TextField;
-  private JTextField player2TextField;
-  private JTextField tournamentTextField;
+  private List<JSlider> sliders;
+  private List<JTextField> textFields;
 
   // ---------------------------------------- Constructor ---------------------------------------
 
@@ -81,48 +80,21 @@ public class DataInputView extends View {
   }
 
   /**
-   * Gets the player 1 skill slider.
+   * Gets a list containing the view's sliders.
    *
-   * @return The player 1 skill slider.
+   * @return A list containing the view's sliders.
    */
-  public JSlider getPlayer1Slider() {
-    return player1Slider;
+  public List<JSlider> getSliders() {
+    return sliders;
   }
 
   /**
-   * Gets the player 2 skill slider.
+   * Gets a list containing the view's text fields.
    *
-   * @return The player 2 skill slider.
+   * @return A list containing the view's text fields.
    */
-  public JSlider getPlayer2Slider() {
-    return player2Slider;
-  }
-
-  /**
-   * Gets the player 1 name text field.
-   *
-   * @return The player 1 name text field.
-   */
-  public JTextField getPlayer1TextField() {
-    return player1TextField;
-  }
-
-  /**
-   * Gets the player 2 name text field.
-   *
-   * @return The player 2 name text field.
-   */
-  public JTextField getPlayer2TextField() {
-    return player2TextField;
-  }
-
-    /**
-   * Gets the tournament title text field.
-   *
-   * @return The tournament title text field.
-   */
-  public JTextField getTournamentTextField() {
-    return tournamentTextField;
+  public List<JTextField> getTextFields() {
+    return textFields;
   }
 
   // ---------------------------------------- Protected methods ---------------------------------
@@ -160,6 +132,10 @@ public class DataInputView extends View {
         ((DataInputController) Main.getController(Views.DATA_INPUT)).backButtonEvent()
     );
 
+    continueButton.addActionListener(e ->
+        ((DataInputController) Main.getController(Views.DATA_INPUT)).backButtonEvent()
+    );
+
     masterPanel.add(continueButton, GROWX_SPAN);
     masterPanel.add(backButton, GROWX_SPAN);
   }
@@ -170,65 +146,84 @@ public class DataInputView extends View {
    * Creates and places the parameters input text fields.
    */
   private void addTextFields() {
-    JLabel player1Label = new JLabel("Nombre del jugador #1:");
-    JLabel player2Label = new JLabel("Nombre del jugador #2:");
-    JLabel tournamentLabel = new JLabel("Nombre del torneo:");
+    textFields = new ArrayList<>();
 
-    player1TextField = new JTextField(Main.MAX_NAME_LEN);
-    player2TextField = new JTextField(Main.MAX_NAME_LEN);
-    tournamentTextField = new JTextField(Main.MAX_NAME_LEN);
+    for (int i = 0; i < 3; i++) {
+      JLabel label = new JLabel("Nombre del " + (i == 0 ? "torneo" : "jugador #" + i));
 
-    masterPanel.add(tournamentLabel);
-    masterPanel.add(tournamentTextField, GROWX);
-    masterPanel.add(new JSeparator(), GROWX_SPAN);
-    masterPanel.add(player1Label);
-    masterPanel.add(player1TextField, GROWX);
-    masterPanel.add(player2Label);
-    masterPanel.add(player2TextField, GROWX);
-    masterPanel.add(new JSeparator(), GROWX_SPAN);
+      JTextField tf = new JTextField(Main.MAX_NAME_LEN);
+
+      tf.addActionListener(e -> {
+        try {
+          ((DataInputController) Main.getController(Views.DATA_INPUT)).textFieldEvent(tf.getText());
+        } catch (IllegalArgumentException stringEx) {
+          Main.showErrorMessage("El nombre debe estar formado sólo por letras");
+
+          tf.setText("");
+
+          return;
+        } catch (InvalidNameException nameEx) {
+          Main.showErrorMessage("El nombre no puede estar vacío, "
+                                + "tener más de " + Main.MAX_NAME_LEN
+                                + " caracteres, o estar repetido");
+
+          tf.setText("");
+
+          return;
+        }
+      });
+
+      textFields.add(tf);
+
+      masterPanel.add(label);
+      masterPanel.add(tf, GROWX);
+    }
   }
 
   /**
    * Creates and places the parameters input sliders.
    */
   private void addSliders() {
-    JLabel player1SliderLabel = new JLabel("Probabilidad de que gane el jugador #1");
-    JLabel player2SliderLabel = new JLabel("Probabilidad de que gane el jugador #2");
+    sliders = new ArrayList<>();
 
-    player1Slider = new JSlider(SwingConstants.HORIZONTAL, DataInputController.SLIDER_MIN,
-                                DataInputController.SLIDER_MAX, DataInputController.SLIDER_INI);
+    for (int i = 0; i < 2; i++) {
+      JSlider slider = new JSlider(SwingConstants.HORIZONTAL, DataInputController.SLIDER_MIN,
+                                   DataInputController.SLIDER_MAX, DataInputController.SLIDER_INI);
 
-    player1Slider.setMajorTickSpacing(DataInputController.SLIDER_SPACING_MAJOR);
-    player1Slider.setMinorTickSpacing(DataInputController.SLIDER_SPACING_MINOR);
-    player1Slider.setPaintTicks(true);
-    player1Slider.setPaintLabels(true);
-    player1Slider.addChangeListener(e -> player2Slider.setValue(100 - player1Slider.getValue()));
+      slider.setMajorTickSpacing(DataInputController.SLIDER_SPACING_MAJOR);
+      slider.setMinorTickSpacing(DataInputController.SLIDER_SPACING_MINOR);
+      slider.setPaintTicks(true);
+      slider.setPaintLabels(true);
 
-    player2Slider = new JSlider(SwingConstants.HORIZONTAL, DataInputController.SLIDER_MIN,
-                                DataInputController.SLIDER_MAX, DataInputController.SLIDER_INI);
+      JLabel label = new JLabel("Probabilidad de que gane el jugador #" + (i + 1));
 
-    player2Slider.setMajorTickSpacing(DataInputController.SLIDER_SPACING_MAJOR);
-    player2Slider.setMinorTickSpacing(DataInputController.SLIDER_SPACING_MINOR);
-    player2Slider.setPaintTicks(true);
-    player2Slider.setPaintLabels(true);
-    player2Slider.addChangeListener(e -> player1Slider.setValue(100 - player2Slider.getValue()));
+      masterPanel.add(new JSeparator(), GROWX_SPAN);
+      masterPanel.add(label, GROWX_SPAN);
+      masterPanel.add(slider, GROWX_SPAN);
 
-    masterPanel.add(player1SliderLabel, GROWX_SPAN);
-    masterPanel.add(player1Slider, GROWX_SPAN);
-    masterPanel.add(new JSeparator(), GROWX_SPAN);
-    masterPanel.add(player2SliderLabel, GROWX_SPAN);
-    masterPanel.add(player2Slider, GROWX_SPAN);
+      sliders.add(slider);
+    }
+
+    sliders.get(0)
+           .addChangeListener(e -> sliders.get(1)
+                                          .setValue(100 - sliders.get(0)
+                                                                 .getValue()));
+
+    sliders.get(1)
+           .addChangeListener(e -> sliders.get(0)
+                                          .setValue(100 - sliders.get(1)
+                                                                 .getValue()));
   }
 
   /**
    * Creates and places the game sets amount combobox.
    */
   private void addComboBox() {
-    JLabel setsAmountLabel = new JLabel("Cantidad de sets:");
-
     comboBox = new JComboBox<>(OPTIONS_COMBOBOX);
 
     comboBox.setSelectedIndex(0);
+
+    JLabel setsAmountLabel = new JLabel("Cantidad de sets:");
 
     masterPanel.add(new JSeparator(), GROWX_SPAN);
     masterPanel.add(setsAmountLabel);

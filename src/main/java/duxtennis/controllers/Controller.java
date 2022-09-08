@@ -1,7 +1,7 @@
 package duxtennis.controllers;
 
-import java.awt.Toolkit;
 import duxtennis.views.View;
+import java.awt.Toolkit;
 
 /**
  * Abstract class that specifies the basic methods for
