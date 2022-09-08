@@ -148,14 +148,23 @@ public class DataInputView extends View {
   private void addTextFields() {
     textFields = new ArrayList<>();
 
-    for (int i = 0; i < 3; i++) {
-      JLabel label = new JLabel("Nombre del " + (i == 0 ? "torneo" : "jugador #" + i));
+    var wrapperIndex = new Object() {
+      private int index;
+    };
+
+    for (wrapperIndex.index = 0; wrapperIndex.index < 3; wrapperIndex.index++) {
+      JLabel label = new JLabel("Nombre del " + (wrapperIndex.index == 0
+                                                 ? "torneo"
+                                                 : "jugador #" + wrapperIndex.index));
 
       JTextField tf = new JTextField(Main.MAX_NAME_LEN);
 
+      textFields.add(tf);
+
       tf.addActionListener(e -> {
         try {
-          ((DataInputController) Main.getController(Views.DATA_INPUT)).textFieldEvent(tf.getText());
+          ((DataInputController) Main.getController(Views.DATA_INPUT))
+          .textFieldEvent(tf.getText(), textFields.indexOf(tf));
         } catch (IllegalArgumentException stringEx) {
           Main.showErrorMessage("El nombre debe estar formado sólo por letras");
 
@@ -172,8 +181,6 @@ public class DataInputView extends View {
           return;
         }
       });
-
-      textFields.add(tf);
 
       masterPanel.add(label);
       masterPanel.add(tf, GROWX);

@@ -85,7 +85,8 @@ public class DataInputController extends Controller {
    * @throws IllegalArgumentException When the input is an invalid string.
    * @throws InvalidNameException     When the input is an invalid name.
    */
-  public void textFieldEvent(String text) throws IllegalArgumentException, InvalidNameException {
+  public void textFieldEvent(String text, int tfIndex)
+                            throws IllegalArgumentException, InvalidNameException {
     if (!validString(text)) {
       throw new IllegalArgumentException();
     }
@@ -93,9 +94,21 @@ public class DataInputController extends Controller {
     text = text.trim()
                .toUpperCase();
 
+    if (tfIndex == 0) {
+      Main.getTournament()
+          .setName(text);
+
+      return;
+    }
+
     if (!validName(text)) {
       throw new InvalidNameException();
     }
+
+    Main.getTournament()
+        .getPlayers()
+        .get(tfIndex - 1)
+        .setName(text);
   }
 
   /**
