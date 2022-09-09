@@ -27,7 +27,9 @@ public class CurrentMatchController extends Controller {
   // ---------------------------------------- Public methods ------------------------------------
 
   /**
-   * Bla.
+   * Updates the data shown in the current match table.
+   * This includes the players points, the players games won
+   * and the players sets won.
    */
   public void updateTable() {
     drawPoints();
@@ -36,7 +38,7 @@ public class CurrentMatchController extends Controller {
   }
 
   /**
-   * Bla.
+   * Updates the players points in the current match table.
    */
   public void drawPoints() {
     Player player1 = Main.getMatch()
@@ -55,7 +57,7 @@ public class CurrentMatchController extends Controller {
   }
 
   /**
-   * Bla.
+   * Updates the players games won in the current match table.
    */
   public void drawGamesWon() {
     Player player1 = Main.getMatch()
@@ -74,7 +76,7 @@ public class CurrentMatchController extends Controller {
   }
 
   /**
-   * Bla.
+   * Updates the players sets won in the current match table.
    */
   public void drawSetsWon() {
     Player player1 = Main.getMatch()
@@ -110,7 +112,7 @@ public class CurrentMatchController extends Controller {
   }
 
   /**
-   * Updates the table cells with the players names.
+   * Updates the players names in the current match table.
    */
   public void drawPlayersNames() {
     for (int i = 0; i < 2; i++) {

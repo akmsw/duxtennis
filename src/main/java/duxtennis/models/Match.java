@@ -53,11 +53,6 @@ public class Match {
    */
   public void addFinishedSet(Set set) {
     finishedSets.add(set);
-
-    System.out.println("SET #" + finishedSets.size() + " DATA:");
-    System.out.println("winner index: " + set.getWinnerIndex() + " - games won: " + set.getWinnerWonGames());
-    System.out.println("loser index: " + set.getLoserIndex() + " - games won: " + set.getLoserWonGames());
-    System.out.println("////////////////////////////////////////////////////////////////////////");
   }
 
   // ---------------------------------------- Getters -------------------------------------------

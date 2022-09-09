@@ -4,6 +4,7 @@ import duxtennis.controllers.Controller;
 import duxtennis.controllers.CurrentMatchController;
 import duxtennis.controllers.DataInputController;
 import duxtennis.controllers.MainMenuController;
+import duxtennis.controllers.MatchResultController;
 import duxtennis.models.Match;
 import duxtennis.models.Player;
 import duxtennis.models.Views;
@@ -11,6 +12,7 @@ import duxtennis.utils.MatchSimulator;
 import duxtennis.views.CurrentMatchView;
 import duxtennis.views.DataInputView;
 import duxtennis.views.MainMenuView;
+import duxtennis.views.MatchResultView;
 import java.awt.Color;
 import java.util.EnumMap;
 import java.util.Map;
@@ -156,6 +158,9 @@ public final class Main {
 
     Controller currentMatchController = new CurrentMatchController(new CurrentMatchView());
     controllersMap.put(Views.CURRENT_MATCH, currentMatchController);
+
+    Controller matchResultController = new MatchResultController(new MatchResultView());
+    controllersMap.put(Views.MATCH_RESULT, matchResultController);
   }
 
   /**

@@ -59,7 +59,7 @@ public class MatchSimulator {
    * Decides who serves in the current game.
    *
    * <p>If it is the first match game, then the server is
-   * chosen randomly.
+   * chosen randomly. If not, the server player is toggled.
    *
    * @param firstTime Whether is the first game or not.
    */
@@ -100,7 +100,14 @@ public class MatchSimulator {
   }
 
   /**
-   * Bla.
+   * Generates a random number between 0.0 and 1.0, and a player is chosen
+   * based on their probabilities.
+   *
+   * <p>Once the player is chosen, its game points are increased, and if
+   * the player game points are more than 40 then the player is flagged
+   * as the game winner.
+   *
+   * <p>Finally the players game points are updated in the table.
    */
   private void generatePoints() {
     Player pointWinner = match.getPlayers()
@@ -124,9 +131,15 @@ public class MatchSimulator {
   }
 
   /**
-   * Bla.
+   * Resets the players game points to 0 and increases by 1
+   * the won games amount of the finished game winner.
    *
-   * @param winner Bla.
+   * <p>If the amount of games won by the winner is 6, then
+   * the winner is flagged as the set winner.
+   *
+   * <p>Finally, the table data is updated.
+   *
+   * @param winner The game winner.
    */
   private void playerWonGame(Player gameWinner) {
     gameWinner.setGamePoints(0);
@@ -149,9 +162,16 @@ public class MatchSimulator {
   }
 
   /**
-   * Bla.
+   * Creates a set and establishes its parameters. Then, resets
+   * the players games won amount and increases by 1 the amount
+   * of sets won by the set winner.
    *
-   * @param setWinner Bla.
+   * <p>If the total amount of finished sets is the same as the
+   * number of sets entered in the data input view, then the match
+   * is finished. If not, a new server is chosen and the table data
+   * is updated.
+   *
+   * @param setWinner The set winner.
    */
   private void playerWonSet(Player setWinner) {
     Player setLoser = match.getPlayers()

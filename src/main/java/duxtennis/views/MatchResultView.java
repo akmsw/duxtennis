@@ -44,6 +44,7 @@ public class MatchResultView extends View {
     setIconImage(Main.ICON.getImage());
     setResizable(false);
     setTitle("Resultado del partido");
+    addTable();
     addButtons();
     add(panel);
   }
@@ -58,5 +59,12 @@ public class MatchResultView extends View {
     JButton rematchButton = new JButton("Revancha");
 
     panel.add(rematchButton, "growx");
+  }
+
+  /**
+   * Adds the results table in the view panel.
+   */
+  private void addTable() {
+
   }
 }
