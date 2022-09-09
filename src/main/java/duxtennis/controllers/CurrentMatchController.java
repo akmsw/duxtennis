@@ -2,6 +2,7 @@ package duxtennis.controllers;
 
 import duxtennis.Main;
 import duxtennis.models.Player;
+import duxtennis.models.Views;
 import duxtennis.views.CurrentMatchView;
 
 /**
@@ -42,18 +43,18 @@ public class CurrentMatchController extends Controller {
    */
   public void drawPoints() {
     Player player1 = Main.getMatch()
-                         .getPlayers()
-                         .get(0);
+        .getPlayers()
+        .get(0);
 
     Player player2 = Main.getMatch()
-                         .getPlayers()
-                         .get(1);
+        .getPlayers()
+        .get(1);
 
     ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt(Integer.toString(player1.getGamePoints()), 1, 4);
+        .setValueAt(Integer.toString(player1.getGamePoints()), 1, 4);
 
     ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt(Integer.toString(player2.getGamePoints()), 2, 4);
+        .setValueAt(Integer.toString(player2.getGamePoints()), 2, 4);
   }
 
   /**
@@ -61,18 +62,18 @@ public class CurrentMatchController extends Controller {
    */
   public void drawGamesWon() {
     Player player1 = Main.getMatch()
-                         .getPlayers()
-                         .get(0);
+        .getPlayers()
+        .get(0);
 
     Player player2 = Main.getMatch()
-                         .getPlayers()
-                         .get(1);
+        .getPlayers()
+        .get(1);
 
     ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt(Integer.toString(player1.getGamesWon()), 1, 3);
+        .setValueAt(Integer.toString(player1.getGamesWon()), 1, 3);
 
     ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt(Integer.toString(player2.getGamesWon()), 2, 3);
+        .setValueAt(Integer.toString(player2.getGamesWon()), 2, 3);
   }
 
   /**
@@ -80,18 +81,18 @@ public class CurrentMatchController extends Controller {
    */
   public void drawSetsWon() {
     Player player1 = Main.getMatch()
-                         .getPlayers()
-                         .get(0);
+        .getPlayers()
+        .get(0);
 
     Player player2 = Main.getMatch()
-                         .getPlayers()
-                         .get(1);
+        .getPlayers()
+        .get(1);
 
     ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt(Integer.toString(player1.getSetsWon()), 1, 2);
+        .setValueAt(Integer.toString(player1.getSetsWon()), 1, 2);
 
     ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt(Integer.toString(player2.getSetsWon()), 2, 2);
+        .setValueAt(Integer.toString(player2.getSetsWon()), 2, 2);
   }
 
   /**
@@ -101,14 +102,14 @@ public class CurrentMatchController extends Controller {
    */
   public void drawServer(Player server) {
     int serverIndex = Main.getMatch()
-                          .getPlayers()
-                          .indexOf(server);
+        .getPlayers()
+        .indexOf(server);
 
     ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt("X", 1 + serverIndex, 1);
+        .setValueAt("X", 1 + serverIndex, 1);
 
     ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt("", 2 - serverIndex, 1);
+        .setValueAt("", 2 - serverIndex, 1);
   }
 
   /**
@@ -117,11 +118,20 @@ public class CurrentMatchController extends Controller {
   public void drawPlayersNames() {
     for (int i = 0; i < 2; i++) {
       ((CurrentMatchView) getView()).getTable()
-                                    .setValueAt(Main.getMatch()
-                                                    .getPlayers()
-                                                    .get(i)
-                                                    .getName(), i + 1, 0);
+          .setValueAt(Main.getMatch()
+              .getPlayers()
+              .get(i)
+              .getName(), i + 1, 0);
     }
+  }
+
+  /**
+   * Bla.
+   */
+  public void matchFinished() {
+    hideView();
+
+    ((MatchResultController) Main.getController(Views.MATCH_RESULT)).showView();
   }
 
   // ---------------------------------------- Protected methods ---------------------------------

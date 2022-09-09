@@ -29,4 +29,17 @@ public class MatchResultController extends Controller {
   protected void resetView() {
     // Not implemented yet
   }
+
+  /**
+   * Updates the title name label and makes the controlled view visible.
+   */
+  @Override
+  protected void showView() {
+    ((MatchResultView) getView()).getTitleLabel()
+                                 .setText("PARTIDO FINALIZADO");
+
+    getView().pack();
+    getView().setLocationRelativeTo(null);
+    getView().setVisible(true);
+  }
 }
