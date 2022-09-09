@@ -44,9 +44,7 @@ public class MatchSimulator {
 
     Timer timer1s = new Timer(1000, null);
 
-    timer1s.addActionListener(e -> {
-      generatePoints();
-    });
+    timer1s.addActionListener(e -> generatePoints());
     timer1s.setRepeats(true);
     timer1s.start();
   }
@@ -83,20 +81,42 @@ public class MatchSimulator {
    * Bla.
    */
   private void generatePoints() {
-    Player player1 = Main.getMatch()
-                         .getPlayers()
-                         .get(0);
+    int playerGamePoints = 15;
 
-    Player player2 = Main.getMatch()
-                         .getPlayers()
-                         .get(1);
+    Player pointWinner = match.getPlayers()
+                              .get((randomGenerator.nextDouble()
+                                    <= (double) match.getPlayers()
+                                                     .get(0)
+                                                     .getSkillPoints() / 100) ? 0 : 1);
 
-    if (randomGenerator.nextDouble() <= (double) player1.getSkillPoints() / 100) {
-      player1.setGamePoints(player1.getGamePoints() + 15);
-    } else {
-      player2.setGamePoints(player2.getGamePoints() + 15);
+    playerGamePoints += pointWinner.getGamePoints();
+
+    if (playerGamePoints == 45) {
+      playerGamePoints = 40;
+    } else if (playerGamePoints > 40) {
+      playerGamePoints = 0;
+      playerWonGame(pointWinner);
     }
 
+    pointWinner.setGamePoints(playerGamePoints);
+
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).drawPoints();
+  }
+
+  /**
+   * Bla.
+   *
+   * @param winner Bla.
+   */
+  private void playerWonGame(Player gameWinner) {
+    gameWinner.setGamePoints(0);
+    gameWinner.setGamesWon(gameWinner.getGamesWon() + 1);
+
+    match.getPlayers()
+         .get(1 - match.getPlayers()
+                       .indexOf(gameWinner))
+         .setGamePoints(0);
+
+    ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
   }
 }
