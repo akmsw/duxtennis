@@ -81,21 +81,19 @@ public class MatchSimulator {
    * Bla.
    */
   private void generatePoints() {
-    int playerGamePoints = 15;
-
     Player pointWinner = match.getPlayers()
                               .get((randomGenerator.nextDouble()
                                     <= (double) match.getPlayers()
                                                      .get(0)
                                                      .getSkillPoints() / 100) ? 0 : 1);
 
-    playerGamePoints += pointWinner.getGamePoints();
+    int playerGamePoints = pointWinner.getGamePoints() + 15;
 
     if (playerGamePoints == 45) {
       playerGamePoints = 40;
     } else if (playerGamePoints > 40) {
-      playerGamePoints = 0;
       playerWonGame(pointWinner);
+      return;
     }
 
     pointWinner.setGamePoints(playerGamePoints);
@@ -110,12 +108,40 @@ public class MatchSimulator {
    */
   private void playerWonGame(Player gameWinner) {
     gameWinner.setGamePoints(0);
-    gameWinner.setGamesWon(gameWinner.getGamesWon() + 1);
 
     match.getPlayers()
          .get(1 - match.getPlayers()
                        .indexOf(gameWinner))
          .setGamePoints(0);
+
+    int gamesWon = gameWinner.getGamesWon() + 1;
+
+    if (gamesWon == 6) {
+      playerWonSet(gameWinner);
+      return;
+    }
+
+    gameWinner.setGamesWon(gamesWon);
+
+    ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
+  }
+
+  /**
+   * Bla.
+   *
+   * @param setWinner Bla.
+   */
+  private void playerWonSet(Player setWinner) {
+    setWinner.setGamesWon(0);
+
+    match.getPlayers()
+         .get(1 - match.getPlayers()
+                       .indexOf(setWinner))
+         .setGamesWon(0);
+
+    int setsWon = setWinner.getSetsWon() + 1;
+
+    setWinner.setSetsWon(setsWon);
 
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
   }
