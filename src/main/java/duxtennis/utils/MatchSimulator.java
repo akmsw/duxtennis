@@ -6,6 +6,7 @@ import duxtennis.models.Match;
 import duxtennis.models.Player;
 import duxtennis.models.Views;
 import java.util.Random;
+import java.util.stream.Collectors;
 import javax.swing.Timer;
 
 /**
@@ -22,6 +23,8 @@ public class MatchSimulator {
   private Match match;
 
   private Random randomGenerator;
+
+  private Timer timer1s;
 
   // ---------------------------------------- Constructor ---------------------------------------
 
@@ -42,7 +45,7 @@ public class MatchSimulator {
   public void simulate() {
     whoServes(true);
 
-    Timer timer1s = new Timer(1000, null);
+    timer1s = new Timer(1000, null);
 
     timer1s.addActionListener(e -> generatePoints());
     timer1s.setRepeats(true);
@@ -74,6 +77,24 @@ public class MatchSimulator {
       ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH))
            .drawServer(match.getPlayers()
                             .get(serverIndex));
+    } else {
+      Player lastServer = match.getPlayers()
+                               .stream()
+                               .filter(Player::serves)
+                               .collect(Collectors.toList())
+                               .get(0);
+
+      lastServer.setServes(false);
+
+      match.getPlayers()
+           .get(1 - match.getPlayers()
+                         .indexOf(lastServer))
+           .setServes(true);
+
+      ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH))
+           .drawServer(match.getPlayers()
+                            .get(1 - match.getPlayers()
+                                          .indexOf(lastServer)));
     }
   }
 
@@ -142,6 +163,21 @@ public class MatchSimulator {
     int setsWon = setWinner.getSetsWon() + 1;
 
     setWinner.setSetsWon(setsWon);
+
+    if (setsWon + match.getPlayers()
+                       .get(1 - match.getPlayers()
+                                     .indexOf(setWinner))
+                       .getSetsWon() == match.getSetsAmount()) {
+      timer1s.stop();
+
+      ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
+
+      Main.showErrorMessage("Partido terminado!");
+
+      return;
+    }
+
+    whoServes(false);
 
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
   }
