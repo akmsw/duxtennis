@@ -10,5 +10,6 @@ package duxtennis.models;
 public enum Views {
   MAIN_MENU,
   DATA_INPUT,
-  RESULTS
+  CURRENT_MATCH,
+  MATCH_RESULT
 }

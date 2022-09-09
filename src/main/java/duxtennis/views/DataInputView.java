@@ -106,14 +106,14 @@ public class DataInputView extends View {
   protected void initializeInterface() {
     masterPanel = new JPanel(new MigLayout("wrap 2"));
 
-    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setTitle(FRAME_TITLE);
-    setResizable(false);
     addTextFields();
     addSliders();
     addComboBox();
     addButtons();
     add(masterPanel);
+    setResizable(false);
+    setTitle(FRAME_TITLE);
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     pack();
     setLocationRelativeTo(null);
   }

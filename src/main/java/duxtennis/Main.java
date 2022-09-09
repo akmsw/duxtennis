@@ -1,11 +1,13 @@
 package duxtennis;
 
 import duxtennis.controllers.Controller;
+import duxtennis.controllers.CurrentMatchController;
 import duxtennis.controllers.DataInputController;
 import duxtennis.controllers.MainMenuController;
 import duxtennis.models.Match;
 import duxtennis.models.Player;
 import duxtennis.models.Views;
+import duxtennis.views.CurrentMatchView;
 import duxtennis.views.DataInputView;
 import duxtennis.views.MainMenuView;
 import java.util.EnumMap;
@@ -118,5 +120,8 @@ public final class Main {
 
     Controller dataInputController = new DataInputController(new DataInputView());
     controllersMap.put(Views.DATA_INPUT, dataInputController);
+
+    Controller currentMatchController = new CurrentMatchController(new CurrentMatchView());
+    controllersMap.put(Views.CURRENT_MATCH, currentMatchController);
   }
 }
