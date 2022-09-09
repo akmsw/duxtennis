@@ -141,11 +141,13 @@ public class CurrentMatchView extends View {
 
             if (row == 0 || column == 0) {
               c.setBackground(Main.LIGHT_BLUE);
-              c.setFont(c.getFont().deriveFont(Font.BOLD));
+              c.setFont(c.getFont()
+                         .deriveFont(Font.BOLD));
               ((DefaultTableCellRenderer) c).setHorizontalAlignment(SwingConstants.CENTER);
             } else {
               c.setBackground(Main.DEFAULT_GRAY);
-              c.setFont(c.getFont().deriveFont(Font.PLAIN));
+              c.setFont(c.getFont()
+                         .deriveFont(Font.PLAIN));
             }
 
             return c;

@@ -1,6 +1,7 @@
 package duxtennis.controllers;
 
 import duxtennis.Main;
+import duxtennis.utils.MatchSimulator;
 import duxtennis.views.CurrentMatchView;
 
 /**
@@ -43,6 +44,6 @@ public class CurrentMatchController extends Controller {
    */
   @Override
   protected void resetView() {
-    // Not implemented here
+    // Not needed here
   }
 }

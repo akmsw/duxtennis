@@ -137,6 +137,8 @@ public class DataInputController extends Controller {
 
     Main.getController(Views.CURRENT_MATCH)
         .showView();
+
+    Main.simulateMatch();
   }
 
   // ---------------------------------------- Private methods -----------------------------------

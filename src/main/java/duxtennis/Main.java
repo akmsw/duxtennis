@@ -7,6 +7,7 @@ import duxtennis.controllers.MainMenuController;
 import duxtennis.models.Match;
 import duxtennis.models.Player;
 import duxtennis.models.Views;
+import duxtennis.utils.MatchSimulator;
 import duxtennis.views.CurrentMatchView;
 import duxtennis.views.DataInputView;
 import duxtennis.views.MainMenuView;
@@ -83,6 +84,15 @@ public final class Main {
   }
 
   // ---------------------------------------- Getters -------------------------------------------
+
+  /**
+  * Triggers the match simulation.
+  */
+  public static void simulateMatch() {
+    MatchSimulator matchSimulator = new MatchSimulator(Main.getMatch());
+
+    matchSimulator.simulate();
+  }
 
   /**
    * Gets the corresponding controller to the requested view.
