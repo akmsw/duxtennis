@@ -1,6 +1,7 @@
 package duxtennis.controllers;
 
 import duxtennis.Main;
+import duxtennis.models.Player;
 import duxtennis.views.CurrentMatchView;
 
 /**
@@ -21,6 +22,25 @@ public class CurrentMatchController extends Controller {
    */
   public CurrentMatchController(CurrentMatchView currentMatchView) {
     super(currentMatchView);
+  }
+
+  // ---------------------------------------- Public methods ------------------------------------
+
+  /**
+   * Draws an 'X' in the table cell corresponding to the server player.
+   *
+   * @param server The server player.
+   */
+  public void drawServer(Player server) {
+    int serverIndex = Main.getMatch()
+                          .getPlayers()
+                          .indexOf(server);
+
+    ((CurrentMatchView) getView()).getTable()
+                                  .setValueAt("X", 1 + serverIndex, 1);
+
+    ((CurrentMatchView) getView()).getTable()
+                                  .setValueAt("", 2 - serverIndex, 1);
   }
 
   /**

@@ -1,9 +1,9 @@
 package duxtennis.utils;
 
 import duxtennis.Main;
+import duxtennis.controllers.CurrentMatchController;
 import duxtennis.models.Match;
 import duxtennis.models.Views;
-import duxtennis.views.CurrentMatchView;
 import javax.swing.Timer;
 
 /**
@@ -51,13 +51,9 @@ public class MatchSimulator {
            .get(1)
            .setServes(false);
 
-      ((CurrentMatchView) Main.getController(Views.CURRENT_MATCH)
-                              .getView()).getTable()
-                                         .setValueAt("X", 1, 1);
-
-      ((CurrentMatchView) Main.getController(Views.CURRENT_MATCH)
-                              .getView()).getTable()
-                                         .setValueAt("", 2, 1);
+      ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH))
+          .drawServer(match.getPlayers()
+                           .get(0));
     } else {
       match.getPlayers()
            .get(0)
@@ -67,16 +63,9 @@ public class MatchSimulator {
            .get(1)
            .setServes(true);
 
-      ((CurrentMatchView) Main.getController(Views.CURRENT_MATCH)
-                              .getView()).getTable()
-                                         .setValueAt("", 1, 1);
-
-      ((CurrentMatchView) Main.getController(Views.CURRENT_MATCH)
-                              .getView()).getTable()
-                                         .setValueAt("X", 2, 1);
+      ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH))
+           .drawServer(match.getPlayers()
+                            .get(1));
     }
-
-    Main.getMatch().getPlayers().forEach(p -> System.out.println(p.getName() + "->" + p.serves()));
-    System.out.println("/////////////////////////////////////////////");
   }
 }
