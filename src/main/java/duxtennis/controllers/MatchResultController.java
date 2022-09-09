@@ -22,6 +22,17 @@ public class MatchResultController extends Controller {
     super(matchResultView);
   }
 
+  // ---------------------------------------- Public methods ------------------------------------
+
+  /**
+   * Bla.
+   */
+  public void updateTable() {
+    ((MatchResultView) getView()).initializeInterface();
+  }
+
+  // ---------------------------------------- Protected methods ---------------------------------
+
   /**
    * Makes the controlled view invisible and resets it to its default values.
    */

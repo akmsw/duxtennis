@@ -1,6 +1,9 @@
 package duxtennis.views;
 
 import duxtennis.Main;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -8,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -35,7 +39,7 @@ public class MatchResultView extends View {
    * Construye una ventana de resultados.
    */
   public MatchResultView() {
-    initializeInterface();
+    // No body needed
   }
 
   // ---------------------------------------- Public methods ------------------------------------
@@ -98,6 +102,66 @@ public class MatchResultView extends View {
    * Adds the results table in the view panel.
    */
   private void addTable() {
-    // TODO
+    table = new JTable(2, Main.getMatch()
+                              .getSetsAmount() + 1);
+
+    setTableFormat();
+
+    panel.add(table, "growx, span");
+  }
+
+  /**
+   * Sets the table cells format, including text alignment,
+   * style and background color.
+   */
+  private void setTableFormat() {
+    table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    table.setCellSelectionEnabled(false);
+    table.setRowSelectionAllowed(false);
+    table.setColumnSelectionAllowed(false);
+    table.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    table.setEnabled(false);
+    table.setDefaultRenderer(
+        Object.class,
+        new DefaultTableCellRenderer() {
+          /**
+           * Configures the table cells background colors and text style & alignment.
+           *
+           * @param table      Source table.
+           * @param value      Table cell value.
+           * @param isSelected If the cell is selected.
+           * @param hasFocus   If the cell is focused.
+           * @param row        Cell row number.
+           * @param column     Cell column number.
+           */
+          @Override
+          public Component getTableCellRendererComponent(JTable myTable, Object value,
+                                                         boolean isSelected, boolean hasFocus,
+                                                         int row, int column) {
+            final Component c = super.getTableCellRendererComponent(myTable, value, isSelected,
+                                                                    hasFocus, row, column);
+
+            if (column == 0) {
+              c.setBackground(Main.LIGHT_BLUE);
+              c.setFont(c.getFont()
+                         .deriveFont(Font.BOLD));
+            } else {
+              c.setBackground(Main.DEFAULT_GRAY);
+              c.setFont(c.getFont()
+                         .deriveFont(Font.PLAIN));
+            }
+
+            ((DefaultTableCellRenderer) c).setHorizontalAlignment(SwingConstants.CENTER);
+
+            return c;
+          }
+        }
+    );
+
+    for (int column = 0; column < table.getColumnCount(); column++) {
+      table.getColumnModel()
+           .getColumn(column)
+           .setPreferredWidth(Main.TABLE_CELLS_WIDTH);
+    }
   }
 }
