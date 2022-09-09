@@ -12,6 +12,7 @@ public class Player {
   // ---------------------------------------- Private fields ------------------------------------
 
   private boolean serves;
+  private boolean winner;
 
   private int setsWon;
   private int skillPoints; // 0 to 100
@@ -34,6 +35,7 @@ public class Player {
     setGamesWon(0);
     setSetsWon(0);
     setServes(false);
+    setWinner(false);
   }
 
   // ---------------------------------------- Public methods ------------------------------------
@@ -92,6 +94,15 @@ public class Player {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Returns whether the player is the match winner or not.
+   *
+   * @return Whether the player is the match winner or not.
+   */
+  public boolean isWinner() {
+    return winner;
   }
 
   // ---------------------------------------- Setters -------------------------------------------
@@ -153,5 +164,14 @@ public class Player {
    */
   public void setServes(boolean serves) {
     this.serves = serves;
+  }
+
+  /**
+   * Sets whether the player is the match winner or not.
+   *
+   * @param winner Whether the player is the match winner or not.
+   */
+  public void setWinner(boolean winner) {
+    this.winner = winner;
   }
 }

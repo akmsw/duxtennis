@@ -1,6 +1,7 @@
 package duxtennis.views;
 
 import duxtennis.Main;
+import duxtennis.models.Set;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -78,8 +79,10 @@ public class MatchResultView extends View {
   @Override
   protected void addButtons() {
     JButton rematchButton = new JButton("Revancha");
+    JButton mainMenuButton = new JButton("Volver al menú principal");
 
     panel.add(rematchButton, "growx");
+    panel.add(mainMenuButton, "growx");
   }
 
   // ---------------------------------------- Private methods -----------------------------------
@@ -106,6 +109,7 @@ public class MatchResultView extends View {
                               .getSetsAmount() + 1);
 
     setTableFormat();
+    fillTable();
 
     panel.add(table, "growx, span");
   }
@@ -162,6 +166,28 @@ public class MatchResultView extends View {
       table.getColumnModel()
            .getColumn(column)
            .setPreferredWidth(Main.TABLE_CELLS_WIDTH);
+    }
+  }
+
+  /**
+   * Bla.
+   */
+  private void fillTable() {
+    for (int i = 0; i < 2; i++) {
+      table.setValueAt(Main.getMatch()
+                           .getPlayers()
+                           .get(i)
+                           .getName(), i, 0);
+    }
+
+    for (int i = 0; i < Main.getMatch()
+                            .getSetsAmount(); i++) {
+      Set set = Main.getMatch()
+                    .getFinishedSets()
+                    .get(i);
+
+      table.setValueAt(set.getLoserWonGames(), set.getLoserIndex(), i + 1);
+      table.setValueAt(set.getWinnerWonGames(), set.getWinnerIndex(), i + 1);
     }
   }
 }

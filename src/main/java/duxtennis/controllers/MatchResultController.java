@@ -1,6 +1,9 @@
 package duxtennis.controllers;
 
+import duxtennis.Main;
+import duxtennis.models.Player;
 import duxtennis.views.MatchResultView;
+import java.util.stream.Collectors;
 
 /**
  * Match result view controller class.
@@ -46,8 +49,18 @@ public class MatchResultController extends Controller {
    */
   @Override
   protected void showView() {
+    String winnerName = Main.getMatch()
+                            .getPlayers()
+                            .stream()
+                            .filter(Player::isWinner)
+                            .collect(Collectors.toList())
+                            .get(0)
+                            .getName();
+
     ((MatchResultView) getView()).getTitleLabel()
-                                 .setText("PARTIDO FINALIZADO");
+                                 .setText("GANADOR DEL TORNEO \""
+                                          + Main.getMatch().getTournamentName()
+                                          + "\": " + winnerName);
 
     getView().pack();
     getView().setLocationRelativeTo(null);

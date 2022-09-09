@@ -209,6 +209,8 @@ public class MatchSimulator {
 
       ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
 
+      setWinner.setWinner(true);
+
       matchEnded = true;
 
       return;
