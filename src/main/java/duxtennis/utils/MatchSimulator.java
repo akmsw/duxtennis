@@ -91,25 +91,25 @@ public class MatchSimulator {
 
       ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH))
           .drawServer(match.getPlayers()
-              .get(serverIndex));
+                           .get(serverIndex));
     } else {
       Player lastServer = match.getPlayers()
-          .stream()
-          .filter(Player::serves)
-          .collect(Collectors.toList())
-          .get(0);
+                               .stream()
+                               .filter(Player::serves)
+                               .collect(Collectors.toList())
+                               .get(0);
 
       lastServer.setServes(false);
 
       match.getPlayers()
-          .get(1 - match.getPlayers()
-              .indexOf(lastServer))
-          .setServes(true);
+           .get(1 - match.getPlayers()
+                         .indexOf(lastServer))
+           .setServes(true);
 
       ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH))
           .drawServer(match.getPlayers()
-              .get(1 - match.getPlayers()
-                  .indexOf(lastServer)));
+                           .get(1 - match.getPlayers()
+                                         .indexOf(lastServer)));
     }
   }
 
@@ -125,9 +125,10 @@ public class MatchSimulator {
    */
   private void generatePoints() {
     Player pointWinner = match.getPlayers()
-        .get((randomGenerator.nextDouble() <= (double) match.getPlayers()
-            .get(0)
-            .getSkillPoints() / 100) ? 0 : 1);
+                              .get((randomGenerator.nextDouble()
+                                    <= (double) match.getPlayers()
+                                                     .get(0)
+                                                     .getSkillPoints() / 100) ? 0 : 1);
 
     int playerGamePoints = pointWinner.getGamePoints() + 15;
 
@@ -158,9 +159,9 @@ public class MatchSimulator {
     gameWinner.setGamePoints(0);
 
     match.getPlayers()
-        .get(1 - match.getPlayers()
-            .indexOf(gameWinner))
-        .setGamePoints(0);
+         .get(1 - match.getPlayers()
+                       .indexOf(gameWinner))
+         .setGamePoints(0);
 
     int gamesWon = gameWinner.getGamesWon() + 1;
 
@@ -188,8 +189,8 @@ public class MatchSimulator {
    */
   private void playerWonSet(Player setWinner) {
     Player setLoser = match.getPlayers()
-        .get(1 - match.getPlayers()
-            .indexOf(setWinner));
+                           .get(1 - match.getPlayers()
+                                         .indexOf(setWinner));
 
     match.addFinishedSet(new Set(setWinner));
 
@@ -201,9 +202,9 @@ public class MatchSimulator {
     setWinner.setSetsWon(setsWon);
 
     if (setsWon + match.getPlayers()
-        .get(1 - match.getPlayers()
-            .indexOf(setWinner))
-        .getSetsWon() == match.getSetsAmount()) {
+                       .get(1 - match.getPlayers()
+                                     .indexOf(setWinner))
+                       .getSetsWon() == match.getSetsAmount()) {
       timer.stop();
 
       ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();

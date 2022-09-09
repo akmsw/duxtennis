@@ -147,8 +147,8 @@ public class CurrentMatchView extends View {
            */
           @Override
           public Component getTableCellRendererComponent(JTable myTable, Object value,
-                                                        boolean isSelected, boolean hasFocus,
-                                                        int row, int column) {
+                                                         boolean isSelected, boolean hasFocus,
+                                                         int row, int column) {
             final Component c = super.getTableCellRendererComponent(myTable, value, isSelected,
                                                                     hasFocus, row, column);
 
@@ -156,12 +156,13 @@ public class CurrentMatchView extends View {
               c.setBackground(Main.LIGHT_BLUE);
               c.setFont(c.getFont()
                          .deriveFont(Font.BOLD));
-              ((DefaultTableCellRenderer) c).setHorizontalAlignment(SwingConstants.CENTER);
             } else {
               c.setBackground(Main.DEFAULT_GRAY);
               c.setFont(c.getFont()
                          .deriveFont(Font.PLAIN));
             }
+
+            ((DefaultTableCellRenderer) c).setHorizontalAlignment(SwingConstants.CENTER);
 
             return c;
           }
