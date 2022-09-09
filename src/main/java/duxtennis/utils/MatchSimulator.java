@@ -3,6 +3,7 @@ package duxtennis.utils;
 import duxtennis.Main;
 import duxtennis.controllers.CurrentMatchController;
 import duxtennis.models.Match;
+import duxtennis.models.Player;
 import duxtennis.models.Views;
 import java.util.Random;
 import javax.swing.Timer;
@@ -39,10 +40,11 @@ public class MatchSimulator {
    * Starts the match simulation.
    */
   public void simulate() {
+    whoServes(true);
+
     Timer timer1s = new Timer(1000, null);
 
     timer1s.addActionListener(e -> {
-      whoServes(true);
       generatePoints();
     });
     timer1s.setRepeats(true);
@@ -81,29 +83,18 @@ public class MatchSimulator {
    * Bla.
    */
   private void generatePoints() {
-    if (randomGenerator.nextDouble() <= (double) Main.getMatch()
-                                                     .getPlayers()
-                                                     .get(0)
-                                                     .getSkillPoints() / 100) {
-      Main.getMatch()
-          .getPlayers()
-          .get(0)
-          .setGamePoints(15);
+    Player player1 = Main.getMatch()
+                         .getPlayers()
+                         .get(0);
 
-      Main.getMatch()
-          .getPlayers()
-          .get(1)
-          .setGamePoints(0);
+    Player player2 = Main.getMatch()
+                         .getPlayers()
+                         .get(1);
+
+    if (randomGenerator.nextDouble() <= (double) player1.getSkillPoints() / 100) {
+      player1.setGamePoints(player1.getGamePoints() + 15);
     } else {
-      Main.getMatch()
-          .getPlayers()
-          .get(1)
-          .setGamePoints(15);
-
-      Main.getMatch()
-          .getPlayers()
-          .get(0)
-          .setGamePoints(0);
+      player2.setGamePoints(player2.getGamePoints() + 15);
     }
 
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).drawPoints();

@@ -102,6 +102,10 @@ public class Player {
    * @param gamePoints The player's current game points.
    */
   public void setGamePoints(int gamePoints) {
+    if (gamePoints == 45) {
+      gamePoints = 40;
+    }
+
     this.gamePoints = gamePoints;
   }
 
