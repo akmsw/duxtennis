@@ -13,7 +13,10 @@ public class Player {
 
   private boolean serves;
 
+  private int setsWon;
   private int skillPoints; // 0 to 100
+  private int gamePoints;
+  private int gamesWon;
 
   private String name;
 
@@ -27,6 +30,9 @@ public class Player {
   public Player(String name) {
     setName(name);
     setSkillPoints(0);
+    setGamePoints(0);
+    setGamesWon(0);
+    setSetsWon(0);
     setServes(false);
   }
 
@@ -41,6 +47,33 @@ public class Player {
    */
   public boolean serves() {
     return serves;
+  }
+
+  /**
+   * Gets the player's current game points.
+   *
+   * @return The player's current game points.
+   */
+  public int getGamePoints() {
+    return gamePoints;
+  }
+
+  /**
+   * Gets the player's games won amount.
+   *
+   * @return The player's games won amount.
+   */
+  public int getGamesWon() {
+    return gamesWon;
+  }
+
+  /**
+   * Gets the player's sets won amount.
+   *
+   * @return The player's sets won amount.
+   */
+  public int getSetsWon() {
+    return setsWon;
   }
 
   /**
@@ -62,6 +95,34 @@ public class Player {
   }
 
   // ---------------------------------------- Setters -------------------------------------------
+
+  /**
+   * Updates the player's current game points.
+   *
+   * @param gamePoints The player's current game points.
+   */
+  public void setGamePoints(int gamePoints) {
+    this.gamePoints = gamePoints;
+  }
+
+  /**
+   * Updates the player's games won amount.
+   *
+   * @param gamesWon The player's games won amount.
+   */
+  public void setGamesWon(int gamesWon) {
+    this.gamesWon = gamesWon;
+  }
+
+
+  /**
+   * Updates the player's sets won amount.
+   *
+   * @param setsWon The player's sets won amount.
+   */
+  public void setSetsWon(int setsWon) {
+    this.setsWon = setsWon;
+  }
 
   /**
    * Updates the player's name.

@@ -27,6 +27,73 @@ public class CurrentMatchController extends Controller {
   // ---------------------------------------- Public methods ------------------------------------
 
   /**
+   * Bla.
+   */
+  public void updateTable() {
+    drawPlayersNames();
+    drawPoints();
+    drawGamesWon();
+    drawSetsWon();
+  }
+
+  /**
+   * Bla.
+   */
+  public void drawPoints() {
+    Player player1 = Main.getMatch()
+                         .getPlayers()
+                         .get(0);
+
+    Player player2 = Main.getMatch()
+                         .getPlayers()
+                         .get(1);
+
+    ((CurrentMatchView) getView()).getTable()
+                                  .setValueAt(Integer.toString(player1.getGamePoints()), 1, 4);
+
+    ((CurrentMatchView) getView()).getTable()
+                                  .setValueAt(Integer.toString(player2.getGamePoints()), 2, 4);
+  }
+
+  /**
+   * Bla.
+   */
+  public void drawGamesWon() {
+    Player player1 = Main.getMatch()
+                         .getPlayers()
+                         .get(0);
+
+    Player player2 = Main.getMatch()
+                         .getPlayers()
+                         .get(1);
+
+    ((CurrentMatchView) getView()).getTable()
+                                  .setValueAt(Integer.toString(player1.getGamesWon()), 1, 3);
+
+    ((CurrentMatchView) getView()).getTable()
+                                  .setValueAt(Integer.toString(player2.getGamesWon()), 2, 3);
+  }
+
+  /**
+   * Bla.
+   */
+  public void drawSetsWon() {
+    Player player1 = Main.getMatch()
+                         .getPlayers()
+                         .get(0);
+
+    Player player2 = Main.getMatch()
+                         .getPlayers()
+                         .get(1);
+
+    ((CurrentMatchView) getView()).getTable()
+                                  .setValueAt(Integer.toString(player1.getSetsWon()), 1, 2);
+
+    ((CurrentMatchView) getView()).getTable()
+                                  .setValueAt(Integer.toString(player2.getSetsWon()), 2, 2);
+  }
+
+  /**
    * Draws an 'X' in the table cell corresponding to the server player.
    *
    * @param server The server player.
@@ -46,7 +113,7 @@ public class CurrentMatchController extends Controller {
   /**
    * Updates the table cells with the players names.
    */
-  public void updateTable() {
+  public void drawPlayersNames() {
     for (int i = 0; i < 2; i++) {
       ((CurrentMatchView) getView()).getTable()
                                     .setValueAt(Main.getMatch()
