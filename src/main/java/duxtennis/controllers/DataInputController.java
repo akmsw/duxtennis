@@ -92,6 +92,10 @@ public class DataInputController extends Controller {
       throw new IllegalArgumentException();
     }
 
+    if (!validName(text)) {
+      throw new InvalidNameException();
+    }
+
     text = text.trim()
                .toUpperCase();
 
@@ -100,10 +104,6 @@ public class DataInputController extends Controller {
           .setTournamentName(text);
 
       return;
-    }
-
-    if (!validName(text)) {
-      throw new InvalidNameException();
     }
 
     Main.getMatch()
@@ -134,9 +134,7 @@ public class DataInputController extends Controller {
                                                                 .getSelectedIndex()));
 
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
-
-    Main.getController(Views.CURRENT_MATCH)
-        .showView();
+    ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).showView();
 
     Main.simulateMatch();
   }

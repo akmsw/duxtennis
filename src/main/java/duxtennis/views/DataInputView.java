@@ -209,7 +209,7 @@ public class DataInputView extends View {
       slider.setPaintTicks(true);
       slider.setPaintLabels(true);
 
-      JLabel label = new JLabel("Probabilidad de que gane el jugador #" + (i + 1) + ":");
+      JLabel label = new JLabel("Prob. victoria jugador #" + (i + 1) + ":");
 
       skillLabels.get(i)
                  .setText(slider.getValue() + "%");
@@ -217,7 +217,7 @@ public class DataInputView extends View {
       masterPanel.add(new JSeparator(), GROWX_SPAN);
       masterPanel.add(label);
       masterPanel.add(skillLabels.get(i));
-      masterPanel.add(slider, GROWX_SPAN);
+      masterPanel.add(slider, "align center, growx, span");
 
       sliders.add(slider);
     }

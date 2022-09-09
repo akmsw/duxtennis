@@ -36,6 +36,7 @@ public final class Main {
 
   public static final Color DEFAULT_GRAY = new Color(238, 238, 238);
   public static final Color LIGHT_BLUE = new Color(163, 184, 204);
+  public static final Color LIGHT_GREEN = new Color(176, 189, 162);
 
   // ---------------------------------------- Private constants ---------------------------------
 

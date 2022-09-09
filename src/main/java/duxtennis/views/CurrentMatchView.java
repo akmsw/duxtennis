@@ -41,6 +41,8 @@ public class CurrentMatchView extends View {
 
   // ---------------------------------------- Private fields ------------------------------------
 
+  private JLabel tournamentNameLabel;
+
   private JPanel panel;
 
   private JTable table;
@@ -69,11 +71,18 @@ public class CurrentMatchView extends View {
     setResizable(false);
     setTitle(FRAME_TITLE);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    pack();
-    setLocationRelativeTo(null);
   }
 
   // --------------------------------------------- Getters --------------------------------------
+
+  /**
+   * Gets the tournament name label.
+   *
+   * @return The tournament name label.
+   */
+  public JLabel getTournamentNameLabel() {
+    return tournamentNameLabel;
+  }
 
   /**
    * Gets the results table.
@@ -100,6 +109,15 @@ public class CurrentMatchView extends View {
    * Adds the current match results table in the view panel.
    */
   private void addTable() {
+    tournamentNameLabel = new JLabel();
+
+    tournamentNameLabel.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+    tournamentNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+    tournamentNameLabel.setBackground(Main.LIGHT_GREEN);
+    tournamentNameLabel.setOpaque(true);
+
+    panel.add(tournamentNameLabel, "growx, span");
+
     table = new JTable(TABLE_ROWS, TABLE_COLUMNS);
 
     setTableFormat();
@@ -179,6 +197,8 @@ public class CurrentMatchView extends View {
 
     label.setBorder(BorderFactory.createLoweredSoftBevelBorder());
     label.setHorizontalAlignment(SwingConstants.CENTER);
+    label.setBackground(Main.LIGHT_GREEN);
+    label.setOpaque(true);
 
     panel.add(label, "growx, span");
   }

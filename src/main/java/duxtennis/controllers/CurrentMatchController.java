@@ -45,4 +45,17 @@ public class CurrentMatchController extends Controller {
   protected void resetView() {
     // Not needed here
   }
+
+  /**
+   * Updates the tournament name label and makes the controlled view visible.
+   */
+  @Override
+  protected void showView() {
+    ((CurrentMatchView) getView()).getTournamentNameLabel()
+                                  .setText("Torneo \"" + Main.getMatch()
+                                                             .getTournamentName() + "\"");
+    getView().pack();
+    getView().setLocationRelativeTo(null);
+    getView().setVisible(true);
+  }
 }
