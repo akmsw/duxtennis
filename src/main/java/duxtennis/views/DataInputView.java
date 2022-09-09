@@ -193,6 +193,11 @@ public class DataInputView extends View {
    * Creates and places the parameters input sliders.
    */
   private void addSliders() {
+    List<JLabel> skillLabels = new ArrayList<>();
+
+    skillLabels.add(new JLabel());
+    skillLabels.add(new JLabel());
+
     sliders = new ArrayList<>();
 
     for (int i = 0; i < 2; i++) {
@@ -204,24 +209,40 @@ public class DataInputView extends View {
       slider.setPaintTicks(true);
       slider.setPaintLabels(true);
 
-      JLabel label = new JLabel("Probabilidad de que gane el jugador #" + (i + 1));
+      JLabel label = new JLabel("Probabilidad de que gane el jugador #" + (i + 1) + ":");
+
+      skillLabels.get(i)
+                 .setText(slider.getValue() + "%");
 
       masterPanel.add(new JSeparator(), GROWX_SPAN);
-      masterPanel.add(label, GROWX_SPAN);
+      masterPanel.add(label);
+      masterPanel.add(skillLabels.get(i));
       masterPanel.add(slider, GROWX_SPAN);
 
       sliders.add(slider);
     }
 
     sliders.get(0)
-           .addChangeListener(e -> sliders.get(1)
-                                          .setValue(100 - sliders.get(0)
-                                                                 .getValue()));
+           .addChangeListener(e -> {
+             sliders.get(1)
+                    .setValue(100 - sliders.get(0)
+                                           .getValue());
+
+             skillLabels.get(0)
+                        .setText(sliders.get(0)
+                                        .getValue() + "%");
+           });
 
     sliders.get(1)
-           .addChangeListener(e -> sliders.get(0)
-                                          .setValue(100 - sliders.get(1)
-                                                                 .getValue()));
+           .addChangeListener(e -> {
+             sliders.get(0)
+                    .setValue(100 - sliders.get(1)
+                                           .getValue());
+
+             skillLabels.get(1)
+                        .setText(sliders.get(1)
+                                        .getValue() + "%");
+           });
   }
 
   /**

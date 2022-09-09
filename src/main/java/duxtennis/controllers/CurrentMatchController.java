@@ -1,7 +1,6 @@
 package duxtennis.controllers;
 
 import duxtennis.Main;
-import duxtennis.utils.MatchSimulator;
 import duxtennis.views.CurrentMatchView;
 
 /**
