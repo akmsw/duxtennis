@@ -3,6 +3,7 @@ package duxtennis.views;
 import duxtennis.Main;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -108,8 +109,8 @@ public class CurrentMatchView extends View {
   }
 
   /**
-   * Sets the table cells format, including text alignment
-   * and background colors.
+   * Sets the table cells format, including text alignment,
+   * style and background color.
    */
   private void setTableFormat() {
     table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -122,7 +123,7 @@ public class CurrentMatchView extends View {
         Object.class,
         new DefaultTableCellRenderer() {
           /**
-           * Configures the table cells background colors and text alignment.
+           * Configures the table cells background colors and text style & alignment.
            *
            * @param table      Source table.
            * @param value      Table cell value.
@@ -140,9 +141,11 @@ public class CurrentMatchView extends View {
 
             if (row == 0 || column == 0) {
               c.setBackground(Main.LIGHT_BLUE);
+              c.setFont(c.getFont().deriveFont(Font.BOLD));
               ((DefaultTableCellRenderer) c).setHorizontalAlignment(SwingConstants.CENTER);
             } else {
               c.setBackground(Main.DEFAULT_GRAY);
+              c.setFont(c.getFont().deriveFont(Font.PLAIN));
             }
 
             return c;
