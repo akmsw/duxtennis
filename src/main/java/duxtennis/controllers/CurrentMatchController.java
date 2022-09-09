@@ -30,7 +30,6 @@ public class CurrentMatchController extends Controller {
    * Bla.
    */
   public void updateTable() {
-    drawPlayersNames();
     drawPoints();
     drawGamesWon();
     drawSetsWon();

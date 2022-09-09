@@ -133,6 +133,7 @@ public class DataInputController extends Controller {
         .setMatchSetsAmount(3 + (2 * ((DataInputView) getView()).getComboBox()
                                                                 .getSelectedIndex()));
 
+    ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).drawPlayersNames();
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).showView();
 
