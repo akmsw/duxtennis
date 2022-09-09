@@ -14,6 +14,7 @@ import duxtennis.views.MainMenuView;
 import java.awt.Color;
 import java.util.EnumMap;
 import java.util.Map;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -26,21 +27,31 @@ import javax.swing.UIManager;
  */
 public final class Main {
 
+  // ---------------------------------------- Private constants ---------------------------------
+
+  private static final String ICON_FILENAME = "icon.png";
+  private static final String ERROR_MESSAGE_TITLE = "¡Error!";
+
   // ---------------------------------------- Public constants ----------------------------------
 
   public static final int MAX_NAME_LEN = 10;
-
-  public static final String IMG_PATH = "img/";
-  public static final String NAMES_VALIDATION_REGEX = "[a-z A-ZÁÉÍÓÚáéíóúñÑ]+";
-  public static final String PROGRAM_TITLE = "DuxTennis";
 
   public static final Color DEFAULT_GRAY = new Color(238, 238, 238);
   public static final Color LIGHT_BLUE = new Color(163, 184, 204);
   public static final Color LIGHT_GREEN = new Color(176, 189, 162);
 
-  // ---------------------------------------- Private constants ---------------------------------
+  public static final String IMG_PATH = "img/";
+  public static final String NAMES_VALIDATION_REGEX = "[a-z A-ZÁÉÍÓÚáéíóúñÑ]+";
+  public static final String PROGRAM_TITLE = "DuxTennis";
 
-  private static final String ERROR_MESSAGE_TITLE = "¡Error!";
+  /**
+   * Program icon.
+   */
+  public static final ImageIcon ICON = new ImageIcon(
+      Main.class
+          .getClassLoader()
+          .getResource(Main.IMG_PATH + Main.ICON_FILENAME)
+  );
 
   // ---------------------------------------- Private fields ------------------------------------
 
