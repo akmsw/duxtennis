@@ -10,9 +10,11 @@ import duxtennis.models.Views;
 import duxtennis.views.CurrentMatchView;
 import duxtennis.views.DataInputView;
 import duxtennis.views.MainMenuView;
+import java.awt.Color;
 import java.util.EnumMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  * Main class, only for program initialization and useful fields declaration.
@@ -30,6 +32,9 @@ public final class Main {
   public static final String IMG_PATH = "img/";
   public static final String NAMES_VALIDATION_REGEX = "[a-z A-ZÁÉÍÓÚáéíóúñÑ]+";
   public static final String PROGRAM_TITLE = "DuxTennis";
+
+  public static final Color DEFAULT_GRAY = new Color(238, 238, 238);
+  public static final Color LIGHT_BLUE = new Color(163, 184, 204);
 
   // ---------------------------------------- Private constants ---------------------------------
 
@@ -58,6 +63,7 @@ public final class Main {
    * @param args Program arguments (not used yet).
    */
   public static void main(String[] args) {
+    setGraphicalProperties();
     setupMatch();
     setControllers();
 
@@ -123,5 +129,13 @@ public final class Main {
 
     Controller currentMatchController = new CurrentMatchController(new CurrentMatchView());
     controllersMap.put(Views.CURRENT_MATCH, currentMatchController);
+  }
+
+  /**
+   * Sets up the program's GUI properties.
+   */
+  private static final void setGraphicalProperties() {
+    UIManager.put("Table.background", DEFAULT_GRAY);
+    UIManager.put("ComboBox.background", Color.WHITE);
   }
 }

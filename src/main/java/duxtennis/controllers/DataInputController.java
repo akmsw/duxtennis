@@ -133,6 +133,8 @@ public class DataInputController extends Controller {
         .setMatchSetsAmount(3 + (2 * ((DataInputView) getView()).getComboBox()
                                                                 .getSelectedIndex()));
 
+    ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
+
     Main.getController(Views.CURRENT_MATCH)
         .showView();
   }

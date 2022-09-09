@@ -1,5 +1,6 @@
 package duxtennis.controllers;
 
+import duxtennis.Main;
 import duxtennis.views.CurrentMatchView;
 
 /**
@@ -9,12 +10,7 @@ import duxtennis.views.CurrentMatchView;
  * @version 0.0.1
  * @since 08/09/2022
  */
-public class CurrentMatchController  extends Controller {
-
-  // ---------------------------------------- Private constants ---------------------------------
-
-  private static final int TABLE_COLUMNS = 5;
-  private static final int TABLE_ROWS = 3;
+public class CurrentMatchController extends Controller {
 
   // ---------------------------------------- Constructor ---------------------------------------
 
@@ -26,6 +22,21 @@ public class CurrentMatchController  extends Controller {
   public CurrentMatchController(CurrentMatchView currentMatchView) {
     super(currentMatchView);
   }
+
+  /**
+   * Updates the table cells with the players names.
+   */
+  public void updateTable() {
+    for (int i = 0; i < 2; i++) {
+      ((CurrentMatchView) getView()).getTable()
+                                    .setValueAt(Main.getMatch()
+                                                    .getPlayers()
+                                                    .get(i)
+                                                    .getName(), i + 1, 0);
+    }
+  }
+
+  // ---------------------------------------- Protected methods ---------------------------------
 
   /**
    * Makes the controlled view invisible and resets it to its default values.
