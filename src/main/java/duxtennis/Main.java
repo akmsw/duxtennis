@@ -34,6 +34,11 @@ public final class Main {
 
   // ---------------------------------------- Public constants ----------------------------------
 
+  /**
+   * Fixed table cells width (in pixels).
+   * This value depends on the program's font and the maximum player name length.
+   */
+  public static final int TABLE_CELLS_WIDTH = 130;
   public static final int MAX_NAME_LEN = 10;
 
   public static final Color DEFAULT_GRAY = new Color(238, 238, 238);

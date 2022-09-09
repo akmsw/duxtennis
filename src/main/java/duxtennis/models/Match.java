@@ -1,5 +1,6 @@
 package duxtennis.models;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,6 +22,8 @@ public class Match {
 
   private String tournamentName;
 
+  private List<Set> finishedSets;
+
   // ---------------------------------------- Constructor ---------------------------------------
 
   /**
@@ -35,11 +38,27 @@ public class Match {
     this.player1 = player1;
     this.player2 = player2;
 
+    finishedSets = new ArrayList<>();
+
     setTournamentName(tournamentName);
     setMatchSetsAmount(setsAmount);
   }
 
   // ---------------------------------------- Public methods ------------------------------------
+
+  /**
+   * Adds a finished set to the list.
+   *
+   * @param set Finished set to add.
+   */
+  public void addFinishedSet(Set set) {
+    finishedSets.add(set);
+
+    System.out.println("SET #" + finishedSets.size() + " DATA:");
+    System.out.println("winner index: " + set.getWinnerIndex() + " - games won: " + set.getWinnerWonGames());
+    System.out.println("loser index: " + set.getLoserIndex() + " - games won: " + set.getLoserWonGames());
+    System.out.println("////////////////////////////////////////////////////////////////////////");
+  }
 
   // ---------------------------------------- Getters -------------------------------------------
 
@@ -53,6 +72,15 @@ public class Match {
   }
 
   /**
+   * Gets the tournament name.
+   *
+   * @return The tournament name.
+   */
+  public String getTournamentName() {
+    return tournamentName;
+  }
+
+  /**
    * Gets the match players.
    *
    * @return The match players.
@@ -62,12 +90,12 @@ public class Match {
   }
 
   /**
-   * Gets the tournament name.
+   * Gets the finished sets.
    *
-   * @return The tournament name.
+   * @return The finished sets.
    */
-  public String getTournamentName() {
-    return tournamentName;
+  public List<Set> getFinishedSets() {
+    return finishedSets;
   }
 
   // ---------------------------------------- Setters -------------------------------------------

@@ -24,12 +24,6 @@ public class CurrentMatchView extends View {
 
   // ---------------------------------------- Private constants ---------------------------------
 
-  /**
-   * Fixed table cells width (in pixels).
-   * This value depends on the program's font
-   * and the maximum player name length.
-   */
-  private static final int FIXED_CELL_WIDTH = 130;
   private static final int TABLE_COLUMNS = 5;
   private static final int TABLE_ROWS = 3;
 
@@ -177,7 +171,7 @@ public class CurrentMatchView extends View {
     for (int column = 0; column < table.getColumnCount(); column++) {
       table.getColumnModel()
            .getColumn(column)
-           .setPreferredWidth(FIXED_CELL_WIDTH);
+           .setPreferredWidth(Main.TABLE_CELLS_WIDTH);
     }
   }
 

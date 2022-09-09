@@ -4,6 +4,7 @@ import duxtennis.Main;
 import duxtennis.controllers.CurrentMatchController;
 import duxtennis.models.Match;
 import duxtennis.models.Player;
+import duxtennis.models.Set;
 import duxtennis.models.Views;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -45,7 +46,7 @@ public class MatchSimulator {
   public void simulate() {
     whoServes(true);
 
-    timer1s = new Timer(1000, null);
+    timer1s = new Timer(500, null);
 
     timer1s.addActionListener(e -> generatePoints());
     timer1s.setRepeats(true);
@@ -137,12 +138,12 @@ public class MatchSimulator {
 
     int gamesWon = gameWinner.getGamesWon() + 1;
 
+    gameWinner.setGamesWon(gamesWon);
+
     if (gamesWon == 6) {
       playerWonSet(gameWinner);
       return;
     }
-
-    gameWinner.setGamesWon(gamesWon);
 
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
   }
@@ -153,12 +154,14 @@ public class MatchSimulator {
    * @param setWinner Bla.
    */
   private void playerWonSet(Player setWinner) {
-    setWinner.setGamesWon(0);
+    Player setLoser = match.getPlayers()
+                           .get(1 - match.getPlayers()
+                                         .indexOf(setWinner));
 
-    match.getPlayers()
-         .get(1 - match.getPlayers()
-                       .indexOf(setWinner))
-         .setGamesWon(0);
+    match.addFinishedSet(new Set(setWinner));
+
+    setWinner.setGamesWon(0);
+    setLoser.setGamesWon(0);
 
     int setsWon = setWinner.getSetsWon() + 1;
 
