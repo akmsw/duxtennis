@@ -1,6 +1,7 @@
 package duxtennis.controllers;
 
 import duxtennis.Main;
+import duxtennis.models.Match;
 import duxtennis.models.Player;
 import duxtennis.models.Views;
 import duxtennis.views.CurrentMatchView;
@@ -65,19 +66,25 @@ public class CurrentMatchController extends Controller {
    * Updates the players games won in the current match table.
    */
   public void drawGamesWon() {
-    Player player1 = Main.getMatch()
-                         .getPlayers()
-                         .get(0);
-
-    Player player2 = Main.getMatch()
-                         .getPlayers()
-                         .get(1);
-
-    ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt(Integer.toString(player1.getGamesWon()), 1, 3);
-
-    ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt(Integer.toString(player2.getGamesWon()), 2, 3);
+    Main.getMatch()
+        .getPlayers()
+        .forEach(p -> {
+          if (p.getGamesWon() > Match.GAMES_TO_WIN_SET + 1) {
+            ((CurrentMatchView) getView()).getTable()
+                                          .setValueAt(Match.GAMES_TO_WIN_SET + " ("
+                                                    + (p.getGamesWon() - Match.GAMES_TO_WIN_SET + 1)
+                                                      + ")",
+                                                      Main.getMatch()
+                                                          .getPlayers()
+                                                          .indexOf(p) + 1, 3);
+          } else {
+            ((CurrentMatchView) getView()).getTable()
+                                          .setValueAt(Integer.toString(p.getGamesWon()),
+                                                      Main.getMatch()
+                                                          .getPlayers()
+                                                          .indexOf(p) + 1, 3);
+          }
+        });
   }
 
   /**
