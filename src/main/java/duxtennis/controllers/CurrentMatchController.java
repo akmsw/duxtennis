@@ -42,19 +42,23 @@ public class CurrentMatchController extends Controller {
    * Updates the players points in the current match table.
    */
   public void drawPoints() {
-    Player player1 = Main.getMatch()
-                         .getPlayers()
-                         .get(0);
-
-    Player player2 = Main.getMatch()
-                         .getPlayers()
-                         .get(1);
-
-    ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt(Integer.toString(player1.getGamePoints()), 1, 4);
-
-    ((CurrentMatchView) getView()).getTable()
-                                  .setValueAt(Integer.toString(player2.getGamePoints()), 2, 4);
+    Main.getMatch()
+        .getPlayers()
+        .forEach(p -> {
+          if (p.getGamePoints() > 40) {
+            ((CurrentMatchView) getView()).getTable()
+                                          .setValueAt("40 (" + (p.getGamePoints() - 40) + ")",
+                                                      Main.getMatch()
+                                                          .getPlayers()
+                                                          .indexOf(p) + 1, 4);
+          } else {
+            ((CurrentMatchView) getView()).getTable()
+                                          .setValueAt(Integer.toString(p.getGamePoints()),
+                                                      Main.getMatch()
+                                                          .getPlayers()
+                                                          .indexOf(p) + 1, 4);
+          }
+        });
   }
 
   /**
