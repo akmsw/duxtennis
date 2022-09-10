@@ -190,8 +190,6 @@ public class MatchSimulator {
       match.setTie5(true);
 
       gamesToWinSet = Match.GAMES_TO_WIN_SET + 1;
-
-      System.out.println("TIE 5!");
     }
 
     if (gamesTie(gameWinner, gameLoser, Match.GAMES_TO_WIN_SET)) {
@@ -199,8 +197,6 @@ public class MatchSimulator {
       match.setTie6(true);
 
       gamesToWinSet = Match.GAMES_TO_WIN_SET + 7;
-
-      System.out.println("TIE 6!");
     }
 
     if (gameWinner.getGamesWon() == gamesToWinSet) {

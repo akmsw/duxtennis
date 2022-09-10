@@ -1,6 +1,7 @@
 package duxtennis.controllers;
 
 import duxtennis.Main;
+import duxtennis.models.Match;
 import duxtennis.models.Player;
 import duxtennis.models.Set;
 import duxtennis.models.Views;
@@ -140,6 +141,8 @@ public class MatchResultController extends Controller {
     getView().setVisible(true);
   }
 
+  // ---------------------------------------- Private methods -----------------------------------
+
   /**
    * Fills the match result table with the sets results.
    */
@@ -152,6 +155,7 @@ public class MatchResultController extends Controller {
                                                    .getName(), i, 0);
     }
 
+
     for (int i = 0; i < Main.getMatch()
                             .getSetsAmount(); i++) {
       Set set = Main.getMatch()
@@ -159,12 +163,37 @@ public class MatchResultController extends Controller {
                     .get(i);
 
       ((MatchResultView) getView()).getTable()
-                                   .setValueAt(set.getLoserWonGames(),
+                                   .setValueAt(getWonGamesString(set.getLoserWonGames(), false),
                                                set.getLoserIndex(), i + 1);
 
       ((MatchResultView) getView()).getTable()
-                                   .setValueAt(set.getWinnerWonGames(),
+                                   .setValueAt(getWonGamesString(set.getWinnerWonGames(), true),
                                                set.getWinnerIndex(), i + 1);
     }
+  }
+
+  /**
+   * Converts the games won to a string.
+   *
+   * <p>If the number of games won is more than the games
+   * needed to win a set (there has been a tie), then the
+   * string is formatted according to the standard tennis
+   * results.
+   *
+   * @param wonGames Number of games won by the player.
+   * @param winner   Whether the player is the set winner.
+   *
+   * @return The games won formatted string.
+   */
+  private String getWonGamesString(int wonGames, boolean winner) {
+    if (wonGames > Match.GAMES_TO_WIN_SET) {
+      if (winner) {
+        return "7 (" + (wonGames - Match.GAMES_TO_WIN_SET) + ")";
+      } else {
+        return "6 (" + (wonGames - Match.GAMES_TO_WIN_SET) + ")";
+      }
+    }
+
+    return Integer.toString(wonGames);
   }
 }
