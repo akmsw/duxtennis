@@ -22,8 +22,6 @@
 - [Instalación y ejecución](https://github.com/akmsw/duxtennis#%EF%B8%8F-instalaci%C3%B3n-y-ejecuci%C3%B3n)
 - [Compilación manual](https://github.com/akmsw/duxtennis#-compilaci%C3%B3n-manual)
 - [¿Cómo se usa?](https://github.com/akmsw/duxtennis#-c%C3%B3mo-se-usa)
-- [Solución a problemas frecuentes](https://github.com/akmsw/duxtennis#%EF%B8%8F-soluci%C3%B3n-a-problemas-frecuentes)
-  - [En Linux](https://github.com/akmsw/duxtennis#-en-linux)
 - [Capturas de pantalla](https://github.com/akmsw/duxtennis#-capturas-de-pantalla)
 
 ## 🔎 ¿Qué es?
@@ -47,13 +45,13 @@ La versión estable más reciente del programa se encuentra disponible para desc
 
 ## ▶️ Instalación y ejecución
 Más allá de los requisitos listados, no hace falta ninguna instalación para correr este programa.\
-Una vez descargado el archivo con extensión ***.jar***, e independientemente del sistema operativo que se utilice, se lo puede ejecutar con un simple *doble click*. En caso de estar en Linux y que el programa no se abra, revisar la sección de [solución a problemas frecuentes en linux](https://github.com/akmsw/duxtennis#-en-linux).\
+Una vez descargado el archivo con extensión ***.jar***, e independientemente del sistema operativo que se utilice, se lo puede ejecutar con un simple *doble click*.
 Una alternativa es abrir una terminal dentro de la carpeta contenedora del archivo y ejecutar el comando:
 ```bash
 java -jar nombre_del_archivo.jar
 ```
 
-## 👨‍🏭 Compilación manual
+## 🛠️ Compilación manual
 Para compilar manualmente el programa, asumiendo que tanto los [requisitos generales](https://github.com/akmsw/duxtennis#-requisitos-generales) como los [requisitos para compilación](https://github.com/akmsw/duxtennis#%EF%B8%8F-requisitos-para-compilaci%C3%B3n) han sido instalados correctamente, se debe dirigir a la carpeta contenedora del proyecto y ejecutar Apache Maven haciendo uso del archivo `pom.xml` con el siguiente comando:
 ```bash
 mvn package --file pom.xml
@@ -73,18 +71,9 @@ Para comenzar un partido, se debe ingresar el nombre del torneo y de los dos jug
 
 Cuando estos parámetros hayan sido establecidos, se podrá hacer click en el botón 'Continuar' para comenzar la simulación.
 
-En este momento, se abrirá una ventana que mostrará el progreso de la simulación del partido, indicando cuántos puntos, games y sets ganados tiene cada jugador en el transcurso del mismo. Durante esta simulación, el usuario sólo puede observar el progreso.
+En ese momento se abrirá una ventana que mostrará el progreso de la simulación del partido, indicando cuántos puntos, games y sets ganados tiene cada jugador en el transcurso del mismo. Durante esta simulación, el usuario sólo puede observar el progreso.
 
 Cuando la simulación finalice, el usuario tendrá frente a sí una nueva ventana que mostrará el resumen del partido, indicando el resultado de cada set y el ganador del partido del torneo. En este punto, el usuario puede optar por jugar una revancha (iniciar un partido con los mismos jugadores y los mismos parámetros que los ingresados en un principio), o volver al menú principal para comenzar otra simulación distinta.
-
-## 🛠️ Solución a problemas frecuentes
-### 🐧 En Linux
-- Si el archivo ***.jar*** no se ejecuta al hacerle doble click, hacer lo siguiente:
-  - Click derecho sobre el archivo descargado
-  - Propiedades
-  - Abrir con...
-  - En el campo de ingreso de comando personalizado, ingresar: `java -jar`
-  - Seleccionarlo como opción predeterminada para la ejecución de archivos .jar
 
 ## 📸 Capturas de pantalla
 
