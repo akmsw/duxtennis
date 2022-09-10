@@ -3,6 +3,7 @@ package duxtennis.controllers;
 import duxtennis.Main;
 import duxtennis.models.Player;
 import duxtennis.models.Views;
+import duxtennis.views.DataInputView;
 import duxtennis.views.MatchResultView;
 import java.util.stream.Collectors;
 
@@ -43,6 +44,10 @@ public class MatchResultController extends Controller {
   public void rematchButtonEvent() {
     hideView();
     resetView();
+
+    Main.getMatch()
+        .setMatchSetsAmount(3 + (2 * ((DataInputView) Main.getController(Views.DATA_INPUT)
+                                            .getView()).getComboBox().getSelectedIndex()));
 
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).drawPlayersNames();
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
