@@ -148,7 +148,7 @@ public class MatchSimulator {
                              .get(1 - match.getPlayers()
                                            .indexOf(pointWinner));
 
-    if (pointsTie(pointWinner, pointLoser, Match.DEUCE_POINTS)) {
+    if (checkDraw(pointWinner.getGamePoints(), pointLoser.getGamePoints(), Match.DEUCE_POINTS)) {
       match.setDeuce(true);
     }
 
@@ -186,13 +186,13 @@ public class MatchSimulator {
 
     gameWinner.setGamesWon(gamesWon);
 
-    if (gamesTie(gameWinner, gameLoser, Match.GAMES_TO_WIN_SET - 1)) {
+    if (checkDraw(gameWinner.getGamesWon(), gameLoser.getGamesWon(), Match.GAMES_TO_WIN_SET - 1)) {
       match.setTie5(true);
 
       gamesToWinSet = Match.GAMES_TO_WIN_SET + 1;
     }
 
-    if (gamesTie(gameWinner, gameLoser, Match.GAMES_TO_WIN_SET)) {
+    if (checkDraw(gameWinner.getGamesWon(), gameLoser.getGamesWon(), Match.GAMES_TO_WIN_SET)) {
       match.setTie5(false);
       match.setTie6(true);
 
@@ -205,7 +205,7 @@ public class MatchSimulator {
     }
 
     if (gameWinner.getGamesWon() == gamesToWinSet) {
-      if (gamesTie(gameWinner, gameLoser, gamesToWinSet)) {
+      if (checkDraw(gameWinner.getGamesWon(), gameLoser.getGamesWon(), gamesToWinSet)) {
         match.setTieBreak(true);
       }
 
@@ -292,30 +292,17 @@ public class MatchSimulator {
   }
 
   /**
-   * Checks whether both players have the same specified game points.
+   * Checks whether both players have the same
+   * specified number in a field.
    *
-   * @param player1 Player 1.
-   * @param player1 Player 2.
-   * @param points  Game points to check.
+   * @param player1 Player 1 field to check.
+   * @param player1 Player 2 field to check.
+   * @param points  Reference to use.
    *
-   * @return Whether both players have the same specified game points.
+   * @return Whether both players have the same specified number in a field.
    */
-  private boolean pointsTie(Player player1, Player player2, int points) {
-    return player1.getGamePoints() == points
-           && player1.getGamePoints() == player2.getGamePoints();
-  }
-
-  /**
-   * Checks whether both players have reached a tie.
-   *
-   * @param player1 Player 1.
-   * @param player1 Player 2.
-   * @param points  Games won to check.
-   *
-   * @return Whether both players have reached a tie.
-   */
-  private boolean gamesTie(Player player1, Player player2, int games) {
-    return player1.getGamesWon() == games
-           && player1.getGamesWon() == player2.getGamesWon();
+  private boolean checkDraw(int player1Points, int player2Points, int reference) {
+    return player1Points == reference
+           && player1Points == player2Points;
   }
 }
