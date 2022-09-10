@@ -41,15 +41,35 @@ public class MatchResultController extends Controller {
    * Bla.
    */
   public void rematchButtonEvent() {
+    hideView();
+    resetView();
 
+    ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).drawPlayersNames();
+    ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
+    ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).showView();
+
+    Main.simulateMatch();
   }
 
   /**
-   * Bla.
+   * Resets every parameter in the program and goes back to the main menu.
    */
   public void mainMenuButtonEvent() {
     hideView();
     resetView();
+
+    Main.getMatch()
+        .getPlayers()
+        .forEach(p -> {
+          p.setName("");
+          p.setSkillPoints(0);
+        });
+
+    Main.getMatch()
+        .setTournamentName("");
+
+    Main.getMatch()
+        .setMatchSetsAmount(0);
 
     Main.getController(Views.MAIN_MENU)
         .showView();
@@ -59,7 +79,10 @@ public class MatchResultController extends Controller {
 
   /**
    * Makes the controlled view invisible and resets the match
-   * and the views to their default values.
+   * and the views to their default values. The players and the
+   * tournament names are resetted only if the main menu button
+   * is pressed, along with the players skill points and the
+   * match sets amount.
    */
   @Override
   protected void resetView() {
@@ -68,22 +91,14 @@ public class MatchResultController extends Controller {
         .forEach(p -> {
           p.setGamePoints(0);
           p.setGamesWon(0);
-          p.setName("");
           p.setServes(false);
           p.setSetsWon(0);
-          p.setSkillPoints(0);
           p.setWinner(false);
         });
 
     Main.getMatch()
         .getFinishedSets()
         .clear();
-
-    Main.getMatch()
-        .setMatchSetsAmount(0);
-
-    Main.getMatch()
-        .setTournamentName("");
 
     ((DataInputController) Main.getController(Views.DATA_INPUT)).resetView();
 
