@@ -11,15 +11,18 @@
 
 ## 📜 Índice
 - [¿Qué es?](https://github.com/akmsw/duxtennis#-qu%C3%A9-es)
-- [Requisitos generales](https://github.com/akmsw/duxtennis#-requisitos)
+- [Requisitos generales](https://github.com/akmsw/duxtennis#-requisitos-generales)
   - [Java](https://github.com/akmsw/duxtennis#-java)
     - [Versión mínima](https://github.com/akmsw/duxtennis#versi%C3%B3n-m%C3%ADnima)
     - [Versión recomendada](https://github.com/akmsw/duxtennis#versi%C3%B3n-recomendada)
-- [Requisitos para compilación](https://github.com/akmsw/duxtennis#-requisitos)
+- [Requisitos para compilación](https://github.com/akmsw/duxtennis#%EF%B8%8F-requisitos-para-compilaci%C3%B3n)
+  - [Apache Maven](https://github.com/akmsw/duxtennis#-apache-maven)
+    - [Versión recomendada](https://github.com/akmsw/duxtennis#versi%C3%B3n-recomendada-1)
 - [Descarga](https://github.com/akmsw/duxtennis#-descarga)
 - [Instalación y ejecución](https://github.com/akmsw/duxtennis#%EF%B8%8F-instalaci%C3%B3n-y-ejecuci%C3%B3n)
+- [Compilación manual](https://github.com/akmsw/duxtennis#-compilaci%C3%B3n-manual)
 - [¿Cómo se usa?](https://github.com/akmsw/duxtennis#-c%C3%B3mo-se-usa)
-- [Solución a problemas frecuentes](https://github.com/akmsw/duxtennis#%EF%B8%8F-soluci%C3%B3n-de-problemas-comunes)
+- [Solución a problemas frecuentes](https://github.com/akmsw/duxtennis#%EF%B8%8F-soluci%C3%B3n-a-problemas-frecuentes)
   - [En Linux](https://github.com/akmsw/duxtennis#-en-linux)
 - [Capturas de pantalla](https://github.com/akmsw/duxtennis#-capturas-de-pantalla)
 
