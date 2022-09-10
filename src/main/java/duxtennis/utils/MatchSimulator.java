@@ -204,7 +204,7 @@ public class MatchSimulator {
     if (matchEnd(setWinner)) {
       timer.stop();
 
-      if (match.getSetsAmount() != setWinner.getSetsWon()) {
+      if (match.getSetsAmount() != setWinner.getSetsWon() + setLoser.getSetsWon()) {
         match.setMatchSetsAmount(setWinner.getSetsWon());
       }
 

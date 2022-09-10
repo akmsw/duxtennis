@@ -39,7 +39,7 @@ Se trata de un simulador de partidos de tenis de 2 jugadores.
 
 ## ⚙️ Requisitos para compilación
 ### 🪶 Apache Maven
-- ### Versión recomendada
+- #### Versión recomendada
     🟢 [Apache Maven 3.8.6](https://maven.apache.org/download.cgi)
 
 ## 📥 Descarga
@@ -69,7 +69,13 @@ java -jar nombre_del_archivo.jar
 ```
 
 ## 📝 ¿Cómo se usa?
+Para comenzar un partido, se debe ingresar el nombre del torneo y de los dos jugadores que participan en el mismo. Luego, se puede calibrar la probabilidad que tiene cada jugador de ganar el partido (recordar que las probabilidades van de 0% a 100% y son complementarias). Finalmente, se puede elegir si jugar un partido a 3 sets o a 5 sets.
 
+Cuando estos parámetros hayan sido establecidos, se podrá hacer click en el botón 'Continuar' para comenzar la simulación.
+
+En este momento, se abrirá una ventana que mostrará el progreso de la simulación del partido, indicando cuántos puntos, games y sets ganados tiene cada jugador en el transcurso del mismo. Durante esta simulación, el usuario sólo puede observar el progreso.
+
+Cuando la simulación finalice, el usuario tendrá frente a sí una nueva ventana que mostrará el resumen del partido, indicando el resultado de cada set y el ganador del partido del torneo. En este punto, el usuario puede optar por jugar una revancha (iniciar un partido con los mismos jugadores y los mismos parámetros que los ingresados en un principio), o volver al menú principal para comenzar otra simulación distinta.
 
 ## 🛠️ Solución a problemas frecuentes
 ### 🐧 En Linux
@@ -81,3 +87,15 @@ java -jar nombre_del_archivo.jar
   - Seleccionarlo como opción predeterminada para la ejecución de archivos .jar
 
 ## 📸 Capturas de pantalla
+
+![menuPrincipal](./src/main/res/img/readme/ss1.png)\
+*Ventana del menú principal*
+
+![ingresoParametros](./src/main/res/img/readme/ss2.png)\
+*Ventana de ingreso de parámetros*
+
+![ingresoParametros](./src/main/res/img/readme/ss3.png)\
+*Ventana de simulación de partido*
+
+![ingresoParametros](./src/main/res/img/readme/ss4.png)\
+*Ventana de resultado de simulación de partido*
