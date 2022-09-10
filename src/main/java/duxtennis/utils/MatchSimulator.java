@@ -148,7 +148,7 @@ public class MatchSimulator {
                              .get(1 - match.getPlayers()
                                            .indexOf(pointWinner));
 
-    if (haveSamePoints(pointWinner, pointLoser, Match.DEUCE_POINTS)) {
+    if (pointsTie(pointWinner, pointLoser, Match.DEUCE_POINTS)) {
       match.setDeuce(true);
     }
 
@@ -186,26 +186,20 @@ public class MatchSimulator {
 
     gameWinner.setGamesWon(gamesWon);
 
-    if (gameWinner.getGamesWon() < Match.GAMES_TO_WIN_SET) {
-      if (isTie(gameWinner, gameLoser, Match.GAMES_TO_WIN_SET - 1)) {
-        match.setTie5(true);
+    if (gamesTie(gameWinner, gameLoser, Match.GAMES_TO_WIN_SET - 1)) {
+      match.setTie5(true);
+      System.out.println("TIE 5!");
+    }
 
-        gamesToWinSet = Match.GAMES_TO_WIN_SET + 1;
-      } else if (isTie(gameWinner, gameLoser, Match.GAMES_TO_WIN_SET)) {
-        match.setTie6(true);
-        match.setTie5(!match.isTie5());
+    if (gamesTie(gameWinner, gameLoser, Match.GAMES_TO_WIN_SET)) {
+      match.setTie5(false);
+      match.setTie6(true);
 
-        gamesToWinSet = Match.GAMES_TO_WIN_SET + 7;
-      }
+      System.out.println("TIE 6!");
     }
 
     if (gameWinner.getGamesWon() == gamesToWinSet) {
-      if (isTie(gameWinner, gameLoser, gamesToWinSet)) {
-
-      }
-
       playerWonSet(gameWinner, gameLoser);
-
       return;
     }
 
@@ -294,7 +288,7 @@ public class MatchSimulator {
    *
    * @return Whether both players have the same specified game points.
    */
-  private boolean haveSamePoints(Player player1, Player player2, int points) {
+  private boolean pointsTie(Player player1, Player player2, int points) {
     return player1.getGamePoints() == points
            && player1.getGamePoints() == player2.getGamePoints();
   }
@@ -308,7 +302,7 @@ public class MatchSimulator {
    *
    * @return Whether both players have reached a tie.
    */
-  private boolean isTie(Player player1, Player player2, int games) {
+  private boolean gamesTie(Player player1, Player player2, int games) {
     return player1.getGamesWon() == games
            && player1.getGamesWon() == player2.getGamesWon();
   }
