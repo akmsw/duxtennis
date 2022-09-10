@@ -39,7 +39,11 @@ public class MatchResultController extends Controller {
   }
 
   /**
-   * Bla.
+   * If the user wants a rematch, the match result view is hidden and resetted
+   * to its default values, the match sets amount is resetted to the combobox
+   * chosen option (it could be changed in
+   * {@link duxtennis.utils.MatchSimulator#playerWonSet(Player, Player)}),
+   * the current match table is updated and the match is simulated again.
    */
   public void rematchButtonEvent() {
     hideView();

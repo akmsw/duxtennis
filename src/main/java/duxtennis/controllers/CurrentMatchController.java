@@ -126,7 +126,8 @@ public class CurrentMatchController extends Controller {
   }
 
   /**
-   * Bla.
+   * When the match ends, the current match view is hidden,
+   * and the match result view is set and displayed.
    */
   public void matchFinished() {
     hideView();

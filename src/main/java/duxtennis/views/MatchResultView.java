@@ -184,7 +184,7 @@ public class MatchResultView extends View {
   }
 
   /**
-   * Bla.
+   * Fills the match result table with the sets results.
    */
   private void fillTable() {
     for (int i = 0; i < 2; i++) {
