@@ -128,10 +128,28 @@ public class Match {
   /**
    * Updates the deuce flag.
    *
-   * @param deuce The deuce flag new state.
+   * @param deuce The deuce flag new value.
    */
   public void setDeuce(boolean deuce) {
     this.deuce = deuce;
+  }
+
+  /**
+   * Updates the 5-games tie flag.
+   *
+   * @param tie5 The 5-games tie flag new value.
+   */
+  public void setTie5(boolean tie5) {
+    this.tie5 = tie5;
+  }
+
+  /**
+   * Updates the 6-games tie flag.
+   *
+   * @param tie6 The 6-games tie flag new value.
+   */
+  public void setTie6(boolean tie6) {
+    this.tie6 = tie6;
   }
 
   /**
