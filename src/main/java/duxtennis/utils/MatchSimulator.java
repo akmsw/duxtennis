@@ -288,10 +288,7 @@ public class MatchSimulator {
     return setWinner.getSetsWon() + setLoser.getSetsWon() == match.getSetsAmount()
            || (setWinner.getSetsWon() > match.getSetsAmount() / 2
                && match.getSetsAmount() - setWinner.getSetsWon()
-                  < match.getSetsAmount() - match.getPlayers()
-                                                 .get(1 - match.getPlayers()
-                                                 .indexOf(setWinner))
-                                                 .getSetsWon());
+                  < match.getSetsAmount() - setLoser.getSetsWon());
   }
 
   /**
