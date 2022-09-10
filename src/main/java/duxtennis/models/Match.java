@@ -16,6 +16,7 @@ public class Match {
 
   public static final int DEUCE_POINTS = 40;
   public static final int POINTS_TO_WIN_GAME = 40;
+  public static final int GAMES_TO_WIN_SET = 6;
 
   // ---------------------------------------- Private fields ------------------------------------
 

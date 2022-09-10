@@ -27,6 +27,8 @@ public class MatchSimulator {
 
   private boolean matchEnded;
 
+  private int gamesToWinSet;
+
   private Match match;
 
   private Random randomGenerator;
@@ -42,6 +44,7 @@ public class MatchSimulator {
     this.match = match;
 
     matchEnded = false;
+    gamesToWinSet = Match.GAMES_TO_WIN_SET;
 
     randomGenerator = new Random();
   }
@@ -136,10 +139,10 @@ public class MatchSimulator {
       playerGamePoints = pointWinner.getGamePoints() + 1;
     } else {
       playerGamePoints = pointWinner.getGamePoints() + 15;
-    }
 
-    if (playerGamePoints == 45 && !match.deuce()) {
-      playerGamePoints = 40;
+      if (playerGamePoints == 45) {
+        playerGamePoints = 40;
+      }
     }
 
     pointWinner.setGamePoints(playerGamePoints);
@@ -152,7 +155,7 @@ public class MatchSimulator {
       match.setDeuce(true);
     }
 
-    if ((match.deuce() && pointWinner.getGamePoints() == pointLoser.getGamePoints() + 2)) {
+    if (match.deuce() && pointWinner.getGamePoints() == pointLoser.getGamePoints() + 2) {
       match.setDeuce(false);
       playerWonGame(pointWinner, pointLoser);
       return;
@@ -186,7 +189,11 @@ public class MatchSimulator {
 
     gameWinner.setGamesWon(gamesWon);
 
-    if (gamesWon == 6) {
+    if (isTie(gameWinner, gameLoser, 5)) {
+      match.setTie5(true);
+    }
+
+    if (gamesWon == gamesToWinSet) {
       playerWonSet(gameWinner, gameLoser);
       return;
     }
@@ -272,12 +279,26 @@ public class MatchSimulator {
    *
    * @param player1 Player 1.
    * @param player1 Player 2.
-   * @param points  Game points to check
+   * @param points  Game points to check.
    *
    * @return Whether both players have the same specified game points.
    */
   private boolean haveSamePoints(Player player1, Player player2, int points) {
     return player1.getGamePoints() == points
            && player1.getGamePoints() == player2.getGamePoints();
+  }
+
+  /**
+   * Checks whether both players have reached a tie.
+   *
+   * @param player1 Player 1.
+   * @param player1 Player 2.
+   * @param points  Games won to check.
+   *
+   * @return Whether both players have reached a tie.
+   */
+  private boolean isTie(Player player1, Player player2, int games) {
+    return player1.getGamesWon() == games
+           && player1.getGamesWon() == player2.getGamesWon();
   }
 }
