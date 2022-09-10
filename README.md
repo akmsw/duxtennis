@@ -22,6 +22,8 @@
 - [Instalación y ejecución](https://github.com/akmsw/duxtennis#%EF%B8%8F-instalaci%C3%B3n-y-ejecuci%C3%B3n)
 - [Compilación manual](https://github.com/akmsw/duxtennis#-compilaci%C3%B3n-manual)
 - [¿Cómo se usa?](https://github.com/akmsw/duxtennis#-c%C3%B3mo-se-usa)
+- [Reglas del juego]()
+- [Comentarios]()
 - [Capturas de pantalla](https://github.com/akmsw/duxtennis#-capturas-de-pantalla)
 
 ## 🔎 ¿Qué es?
@@ -74,6 +76,27 @@ Cuando estos parámetros hayan sido establecidos, se podrá hacer click en el bo
 En ese momento se abrirá una ventana que mostrará el progreso de la simulación del partido, indicando cuántos puntos, games y sets ganados tiene cada jugador en el transcurso del mismo. Durante esta simulación, el usuario sólo puede observar el progreso.
 
 Cuando la simulación finalice, el usuario tendrá frente a sí una nueva ventana que mostrará el resumen del partido, indicando el resultado de cada set y el ganador del partido del torneo. En este punto, el usuario puede optar por jugar una revancha (iniciar un partido con los mismos jugadores y los mismos parámetros que los ingresados en un principio), o volver al menú principal para comenzar otra simulación distinta.
+
+## 📖 Reglas del juego
+Como simple recordatorio, se detallan a continuación las reglas básicas de un partido de tenis tenidas en cuenta para el desarrollo de este programa.
+
+- El jugador que efectúa el saque cambiará cada set.
+- El primer saque del juego (primer set) será asignado a un jugador de manera aleatoria.
+- El resto de saques será intercalado (el jugador que sacó en el set anterior, recibirá en el set actual).
+- Cada partido se puede jugar a 3 ó 5 sets.
+- Cada set está compuesto por 6 games en principio.
+- Para ganar un game, un jugador debe pasar los 40 puntos con diferencia de 2.
+- Los puntos son de la forma: 0-15-30-40-game
+- Si los jugadores empatan 40-40 en los puntos, el game se disputa por diferencia de 2.
+- Si los jugadores empatan 5-5 en games, el set se jugará a 7; y para ganar el set, uno de los dos deberá ganar 7-5 (diferencia de 2).
+- Si los jugadores empatan 6-6 en games, se entra a un 'tie break', donde jugarán mínimo hasta 7 puntos (comenzando desde 0), y ganará el set el jugador que gane el tie break a 7 con diferencia de 2.
+- Si los jugadores empatan 6-6 en el tie break, se desempatará el tie break con diferencia de 2.
+- Si el partido es a 3 sets y un jugador gana 2 sets seguidos, el tercer set no se jugará.
+- Si el partido es a 5 sets y un jugador gana 3 sets seguidos, el cuarto set no se jugará.
+- Si el partido es a 5 sets y un jugador gana 3 sets y el otro sólo 1, el quinto set no se jugará.
+
+## 💬 Comentarios
+En la ventana de ingreso de parámetros, el botón 'Continuar' está deshabilitado al comienzo. Para habilitarlo, es necesario ingresar todos los nombres pedidos (escribir en el campo de texto y presionar la tecla 'Enter').
 
 ## 📸 Capturas de pantalla
 ![mainMenu](./src/main/res/img/readme/ss1.png)\
