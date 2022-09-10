@@ -76,15 +76,23 @@ En ese momento se abrirá una ventana que mostrará el progreso de la simulació
 Cuando la simulación finalice, el usuario tendrá frente a sí una nueva ventana que mostrará el resumen del partido, indicando el resultado de cada set y el ganador del partido del torneo. En este punto, el usuario puede optar por jugar una revancha (iniciar un partido con los mismos jugadores y los mismos parámetros que los ingresados en un principio), o volver al menú principal para comenzar otra simulación distinta.
 
 ## 📸 Capturas de pantalla
-
-![menuPrincipal](./src/main/res/img/readme/ss1.png)\
+![mainMenu](./src/main/res/img/readme/ss1.png)\
 *Ventana del menú principal*
 
-![ingresoParametros](./src/main/res/img/readme/ss2.png)\
+![dataInput](./src/main/res/img/readme/ss2.png)\
 *Ventana de ingreso de parámetros*
 
-![ingresoParametros](./src/main/res/img/readme/ss3.png)\
-*Ventana de simulación de partido*
+![simulation1](./src/main/res/img/readme/ss3.png)\
+*Ventana de progreso de simulación de partido sin deuce ni empates*
 
-![ingresoParametros](./src/main/res/img/readme/ss4.png)\
-*Ventana de resultado de simulación de partido*
+![simulation2](./src/main/res/img/readme/ss4.png)\
+*Ventana de progreso de simulación de partido con deuce*
+
+![simulation3](./src/main/res/img/readme/ss5.png)\
+*Ventana de progreso de simulación de partido con empate*
+
+![result1](./src/main/res/img/readme/ss6.png)\
+*Ventana de resultado de partido sin empates*
+
+![result2](./src/main/res/img/readme/ss7.png)\
+*Ventana de resultado de partido con empates*

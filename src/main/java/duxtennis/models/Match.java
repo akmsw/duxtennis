@@ -23,6 +23,7 @@ public class Match {
   private boolean deuce;
   private boolean tie5;
   private boolean tie6;
+  private boolean tieBreak;
 
   private int setsAmount;
 
@@ -51,6 +52,9 @@ public class Match {
     setTournamentName(tournamentName);
     setMatchSetsAmount(setsAmount);
     setDeuce(false);
+    setTie5(false);
+    setTie6(false);
+    setTieBreak(false);
   }
 
   // ---------------------------------------- Public methods ------------------------------------
@@ -91,6 +95,15 @@ public class Match {
    */
   public boolean isTie6() {
     return tie6;
+  }
+
+  /**
+   * Returns whether the match is in a tie break.
+   *
+   * @return Whether the match is in a tie break.
+   */
+  public boolean isTieBreak() {
+    return tieBreak;
   }
 
   /**
@@ -147,6 +160,15 @@ public class Match {
    */
   public void setTie5(boolean tie5) {
     this.tie5 = tie5;
+  }
+
+  /**
+   * Updates the tie break flag.
+   *
+   * @param tieBreak The tie break flag new value.
+   */
+  public void setTieBreak(boolean tieBreak) {
+    this.tieBreak = tieBreak;
   }
 
   /**

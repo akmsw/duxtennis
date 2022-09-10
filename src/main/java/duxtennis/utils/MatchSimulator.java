@@ -199,7 +199,16 @@ public class MatchSimulator {
       gamesToWinSet = Match.GAMES_TO_WIN_SET + 7;
     }
 
+    if (match.isTieBreak() && gameWinner.getGamePoints() == gameLoser.getGamePoints() + 2) {
+      playerWonSet(gameWinner, gameLoser);
+      return;
+    }
+
     if (gameWinner.getGamesWon() == gamesToWinSet) {
+      if (gamesTie(gameWinner, gameLoser, gamesToWinSet)) {
+        match.setTieBreak(true);
+      }
+
       playerWonSet(gameWinner, gameLoser);
       return;
     }
@@ -249,6 +258,7 @@ public class MatchSimulator {
     if (match.isTie5() || match.isTie6()) {
       match.setTie5(false);
       match.setTie6(false);
+      match.setTieBreak(false);
 
       gamesToWinSet = Match.GAMES_TO_WIN_SET;
     }

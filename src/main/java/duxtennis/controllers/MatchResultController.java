@@ -186,7 +186,7 @@ public class MatchResultController extends Controller {
    * @return The games won formatted string.
    */
   private String getWonGamesString(int wonGames, boolean winner) {
-    if (wonGames > Match.GAMES_TO_WIN_SET) {
+    if (wonGames > Match.GAMES_TO_WIN_SET + 1) {
       if (winner) {
         return "7 (" + (wonGames - Match.GAMES_TO_WIN_SET) + ")";
       } else {
