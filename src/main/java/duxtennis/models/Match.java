@@ -1,7 +1,6 @@
 package duxtennis.models;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,9 +15,6 @@ public class Match {
   // ---------------------------------------- Private fields ------------------------------------
 
   private int setsAmount;
-
-  private Player player1;
-  private Player player2;
 
   private String tournamentName;
 
@@ -36,9 +32,6 @@ public class Match {
    * @param setsAmount     The match sets amount.
    */
   public Match(Player player1, Player player2, String tournamentName, int setsAmount) {
-    this.player1 = player1;
-    this.player2 = player2;
-
     finishedSets = new ArrayList<>();
     players = new ArrayList<>();
 
