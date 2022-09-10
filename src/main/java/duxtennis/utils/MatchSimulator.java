@@ -201,11 +201,12 @@ public class MatchSimulator {
 
     setWinner.setSetsWon(setsWon);
 
-    if (setsWon + match.getPlayers()
-                       .get(1 - match.getPlayers()
-                                     .indexOf(setWinner))
-                       .getSetsWon() == match.getSetsAmount()) {
+    if (matchEnd(setWinner)) {
       timer.stop();
+
+      if (match.getSetsAmount() != setWinner.getSetsWon()) {
+        match.setMatchSetsAmount(setWinner.getSetsWon());
+      }
 
       ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
 
@@ -219,5 +220,26 @@ public class MatchSimulator {
     whoServes(false);
 
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
+  }
+
+  /**
+   * Checks whether the match endind conditions are met.
+   *
+   * <p>A match ends when every set in the match has been
+   * finished, or if a player takes advantage in more than
+   * half of the match sets (e.g.: in a 3 sets match, if a
+   * player gets 2-0 the match ends because it is not possible
+   * for the other player to even reach a draw).
+   *
+   * @param setWinner The set winner.
+   *
+   * @return Whether the match endind conditions are met.
+   */
+  private boolean matchEnd(Player setWinner) {
+    return setWinner.getSetsWon() + match.getPlayers()
+                                         .get(1 - match.getPlayers()
+                                                       .indexOf(setWinner))
+                                         .getSetsWon() == match.getSetsAmount()
+           || setWinner.getSetsWon() > match.getSetsAmount() / 2;
   }
 }
