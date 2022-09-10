@@ -131,7 +131,7 @@ public class CurrentMatchController extends Controller {
   public void matchFinished() {
     hideView();
 
-    ((MatchResultController) Main.getController(Views.MATCH_RESULT)).updateTable();
+    ((MatchResultController) Main.getController(Views.MATCH_RESULT)).setupInterface();
     ((MatchResultController) Main.getController(Views.MATCH_RESULT)).showView();
   }
 

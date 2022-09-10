@@ -22,6 +22,7 @@ public class Match {
 
   private String tournamentName;
 
+  private List<Player> players;
   private List<Set> finishedSets;
 
   // ---------------------------------------- Constructor ---------------------------------------
@@ -39,6 +40,10 @@ public class Match {
     this.player2 = player2;
 
     finishedSets = new ArrayList<>();
+    players = new ArrayList<>();
+
+    players.add(player1);
+    players.add(player2);
 
     setTournamentName(tournamentName);
     setMatchSetsAmount(setsAmount);
@@ -81,7 +86,7 @@ public class Match {
    * @return The match players.
    */
   public List<Player> getPlayers() {
-    return Arrays.asList(player1, player2);
+    return players;
   }
 
   /**

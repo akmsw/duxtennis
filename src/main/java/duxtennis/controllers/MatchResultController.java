@@ -2,6 +2,7 @@ package duxtennis.controllers;
 
 import duxtennis.Main;
 import duxtennis.models.Player;
+import duxtennis.models.Views;
 import duxtennis.views.MatchResultView;
 import java.util.stream.Collectors;
 
@@ -28,20 +29,66 @@ public class MatchResultController extends Controller {
   // ---------------------------------------- Public methods ------------------------------------
 
   /**
+   * Initializes the match result view interface.
+   * This method should be called only after the match has endede
+   * in order to get the player names and every set result.
+   */
+  public void setupInterface() {
+    ((MatchResultView) getView()).initializeInterface();
+  }
+
+  /**
    * Bla.
    */
-  public void updateTable() {
-    ((MatchResultView) getView()).initializeInterface();
+  public void rematchButtonEvent() {
+
+  }
+
+  /**
+   * Bla.
+   */
+  public void mainMenuButtonEvent() {
+    hideView();
+    resetView();
+
+    Main.getController(Views.MAIN_MENU)
+        .showView();
   }
 
   // ---------------------------------------- Protected methods ---------------------------------
 
   /**
-   * Makes the controlled view invisible and resets it to its default values.
+   * Makes the controlled view invisible and resets the match
+   * and the views to their default values.
    */
   @Override
   protected void resetView() {
-    // Not implemented yet
+    Main.getMatch()
+        .getPlayers()
+        .forEach(p -> {
+          p.setGamePoints(0);
+          p.setGamesWon(0);
+          p.setName("");
+          p.setServes(false);
+          p.setSetsWon(0);
+          p.setSkillPoints(0);
+          p.setWinner(false);
+        });
+
+    Main.getMatch()
+        .getFinishedSets()
+        .clear();
+
+    Main.getMatch()
+        .setMatchSetsAmount(0);
+
+    Main.getMatch()
+        .setTournamentName("");
+
+    ((DataInputController) Main.getController(Views.DATA_INPUT)).resetView();
+
+    getView().dispose();
+    setView(new MatchResultView());
   }
 
   /**

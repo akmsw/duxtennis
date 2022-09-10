@@ -1,7 +1,9 @@
 package duxtennis.views;
 
 import duxtennis.Main;
+import duxtennis.controllers.MatchResultController;
 import duxtennis.models.Set;
+import duxtennis.models.Views;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -71,6 +73,10 @@ public class MatchResultView extends View {
     return titleLabel;
   }
 
+  public JTable getTable() {
+    return table;
+  }
+
   // ---------------------------------------- Protected methods ---------------------------------
 
   /**
@@ -80,6 +86,14 @@ public class MatchResultView extends View {
   protected void addButtons() {
     JButton rematchButton = new JButton("Revancha");
     JButton mainMenuButton = new JButton("Volver al menú principal");
+
+    rematchButton.addActionListener(e ->
+        ((MatchResultController) Main.getController(Views.MATCH_RESULT)).rematchButtonEvent()
+    );
+
+    mainMenuButton.addActionListener(e ->
+        ((MatchResultController) Main.getController(Views.MATCH_RESULT)).mainMenuButtonEvent()
+    );
 
     panel.add(rematchButton, "growx");
     panel.add(mainMenuButton, "growx");
