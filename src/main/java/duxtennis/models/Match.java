@@ -14,6 +14,8 @@ public class Match {
 
   // ---------------------------------------- Private fields ------------------------------------
 
+  private boolean deuce;
+
   private int setsAmount;
 
   private String tournamentName;
@@ -40,6 +42,7 @@ public class Match {
 
     setTournamentName(tournamentName);
     setMatchSetsAmount(setsAmount);
+    setDeuce(false);
   }
 
   // ---------------------------------------- Public methods ------------------------------------
@@ -54,6 +57,15 @@ public class Match {
   }
 
   // ---------------------------------------- Getters -------------------------------------------
+
+  /**
+   * Returns whether the match is in deuce or not.
+   *
+   * @return Whether the match is in deuce or not.
+   */
+  public boolean deuce() {
+    return deuce;
+  }
 
   /**
    * Gets the match sets amount.
@@ -92,6 +104,15 @@ public class Match {
   }
 
   // ---------------------------------------- Setters -------------------------------------------
+
+  /**
+   * Updates the deuce flag.
+   *
+   * @param deuce The deuce flag new state.
+   */
+  private void setDeuce(boolean deuce) {
+    this.deuce = deuce;
+  }
 
   /**
    * Updates the tournament name.

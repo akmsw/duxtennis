@@ -102,16 +102,16 @@ public final class Main {
                                   JOptionPane.ERROR_MESSAGE, null);
   }
 
-  // ---------------------------------------- Getters -------------------------------------------
-
   /**
-  * Triggers the match simulation.
-  */
+   * Triggers the match simulation.
+   */
   public static void simulateMatch() {
     MatchSimulator matchSimulator = new MatchSimulator(Main.getMatch());
 
     matchSimulator.simulate();
   }
+
+  // ---------------------------------------- Getters -------------------------------------------
 
   /**
    * Gets the corresponding controller to the requested view.

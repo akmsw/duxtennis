@@ -27,7 +27,7 @@ public class CurrentMatchView extends View {
   private static final int TABLE_COLUMNS = 5;
   private static final int TABLE_ROWS = 3;
 
-  private static final String FRAME_TITLE = "Progreso del partido actual";
+  private static final String FRAME_TITLE = "Progreso del partido";
 
   private static final String[] TABLE_TITLES = {
     "SAQUE", "SETS", "GAMES", "PUNTOS"
