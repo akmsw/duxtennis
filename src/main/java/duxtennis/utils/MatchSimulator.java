@@ -21,7 +21,7 @@ public class MatchSimulator {
 
   // ---------------------------------------- Private constants ---------------------------------
 
-  private static final int TIMER_DELAY_MS = 500;
+  private static final int TIMER_DELAY_MS = 100;
 
   // ---------------------------------------- Private fields ------------------------------------
 
@@ -239,7 +239,7 @@ public class MatchSimulator {
 
     setWinner.setSetsWon(setsWon);
 
-    if (matchEnd(setWinner)) {
+    if (matchEnd(setWinner, setLoser)) {
       timer.stop();
 
       if (match.getSetsAmount() != setWinner.getSetsWon() + setLoser.getSetsWon()) {
@@ -284,11 +284,8 @@ public class MatchSimulator {
    *
    * @return Whether the match endind conditions are met.
    */
-  private boolean matchEnd(Player setWinner) {
-    return setWinner.getSetsWon() + match.getPlayers()
-                                         .get(1 - match.getPlayers()
-                                                       .indexOf(setWinner))
-                                         .getSetsWon() == match.getSetsAmount()
+  private boolean matchEnd(Player setWinner, Player setLoser) {
+    return setWinner.getSetsWon() + setLoser.getSetsWon() == match.getSetsAmount()
            || (setWinner.getSetsWon() > match.getSetsAmount() / 2
                && match.getSetsAmount() - setWinner.getSetsWon()
                   < match.getSetsAmount() - match.getPlayers()

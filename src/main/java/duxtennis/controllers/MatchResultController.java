@@ -53,7 +53,8 @@ public class MatchResultController extends Controller {
 
     Main.getMatch()
         .setMatchSetsAmount(3 + (2 * ((DataInputView) Main.getController(Views.DATA_INPUT)
-                                            .getView()).getComboBox().getSelectedIndex()));
+                                                          .getView()).getComboBox()
+                                                                     .getSelectedIndex()));
 
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).drawPlayersNames();
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
@@ -68,6 +69,8 @@ public class MatchResultController extends Controller {
   public void mainMenuButtonEvent() {
     hideView();
     resetView();
+
+    ((DataInputController) Main.getController(Views.DATA_INPUT)).resetView();
 
     Main.getMatch()
         .getPlayers()
@@ -110,8 +113,6 @@ public class MatchResultController extends Controller {
     Main.getMatch()
         .getFinishedSets()
         .clear();
-
-    ((DataInputController) Main.getController(Views.DATA_INPUT)).resetView();
 
     getView().dispose();
     setView(new MatchResultView());
