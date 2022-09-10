@@ -130,26 +130,38 @@ public class MatchSimulator {
                                                      .get(0)
                                                      .getSkillPoints() / 100) ? 0 : 1);
 
+    int playerGamePoints;
+
+    if (match.deuce()) {
+      playerGamePoints = pointWinner.getGamePoints() + 1;
+    } else {
+      playerGamePoints = pointWinner.getGamePoints() + 15;
+    }
+
+    if (playerGamePoints == 45 && !match.deuce()) {
+      playerGamePoints = 40;
+    }
+
+    pointWinner.setGamePoints(playerGamePoints);
+
     Player pointLoser = match.getPlayers()
                              .get(1 - match.getPlayers()
                                            .indexOf(pointWinner));
 
-    int playerGamePoints = pointWinner.getGamePoints() + 15;
-
-    if (playerGamePoints == 45) {
-      playerGamePoints = 40;
-
-      if (haveSamePoints(pointWinner, pointLoser, playerGamePoints)) {
-        match.setDeuce(true);
-      }
+    if (haveSamePoints(pointWinner, pointLoser, Match.DEUCE_POINTS)) {
+      match.setDeuce(true);
     }
 
-    if (playerGamePoints > 40) {
+    if ((match.deuce() && pointWinner.getGamePoints() == pointLoser.getGamePoints() + 2)) {
+      match.setDeuce(false);
       playerWonGame(pointWinner, pointLoser);
       return;
     }
 
-    pointWinner.setGamePoints(playerGamePoints);
+    if (!match.deuce() && pointWinner.getGamePoints() > Match.POINTS_TO_WIN_GAME) {
+      playerWonGame(pointWinner, pointLoser);
+      return;
+    }
 
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).drawPoints();
   }
@@ -256,15 +268,16 @@ public class MatchSimulator {
   }
 
   /**
-   * Bla.
+   * Checks whether both players have the same specified game points.
    *
-   * @param player1 Bla.
-   * @param player1 Bla.
-   * @param points  Bla.
+   * @param player1 Player 1.
+   * @param player1 Player 2.
+   * @param points  Game points to check
    *
-   * @return Bla.
+   * @return Whether both players have the same specified game points.
    */
   private boolean haveSamePoints(Player player1, Player player2, int points) {
-    return player1.getGamePoints() == points && player1.getGamePoints() == player2.getGamePoints();
+    return player1.getGamePoints() == points
+           && player1.getGamePoints() == player2.getGamePoints();
   }
 }

@@ -12,6 +12,11 @@ import java.util.List;
  */
 public class Match {
 
+  // ---------------------------------------- Public constants ----------------------------------
+
+  public static final int DEUCE_POINTS = 40;
+  public static final int POINTS_TO_WIN_GAME = 40;
+
   // ---------------------------------------- Private fields ------------------------------------
 
   private boolean deuce;
