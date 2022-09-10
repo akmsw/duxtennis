@@ -227,9 +227,12 @@ public class MatchSimulator {
    *
    * <p>A match ends when every set in the match has been
    * finished, or if a player takes advantage in more than
-   * half of the match sets (e.g.: in a 3 sets match, if a
-   * player gets 2-0 the match ends because it is not possible
-   * for the other player to even reach a draw).
+   * half of the match sets.
+   *
+   * <p>For example, in a 3 sets match, if a player gets
+   * 2-0 the match ends because it is not possible for
+   * the other player to even reach a draw. The same happens
+   * with 3-0 or 3-1 in a 5 sets match.
    *
    * @param setWinner The set winner.
    *
@@ -240,6 +243,11 @@ public class MatchSimulator {
                                          .get(1 - match.getPlayers()
                                                        .indexOf(setWinner))
                                          .getSetsWon() == match.getSetsAmount()
-           || setWinner.getSetsWon() > match.getSetsAmount() / 2;
+           || (setWinner.getSetsWon() > match.getSetsAmount() / 2
+               && match.getSetsAmount() - setWinner.getSetsWon()
+                  < match.getSetsAmount() - match.getPlayers()
+                                                 .get(1 - match.getPlayers()
+                                                 .indexOf(setWinner))
+                                                 .getSetsWon());
   }
 }
