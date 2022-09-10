@@ -54,7 +54,7 @@ java -jar nombre_del_archivo.jar
 ```
 
 ## 👨‍🏭 Compilación manual
-Para compilar manualmente el programa, asumiendo que tanto los [requisitos generales]() como los [requisitos de compilación]() han sido instalados correctamente, se debe dirigir a la carpeta contenedora del proyecto y ejecutar Apache Maven haciendo uso del archivo `pom.xml` con el siguiente comando:
+Para compilar manualmente el programa, asumiendo que tanto los [requisitos generales](https://github.com/akmsw/duxtennis#-requisitos-generales) como los [requisitos para compilación](https://github.com/akmsw/duxtennis#%EF%B8%8F-requisitos-para-compilaci%C3%B3n) han sido instalados correctamente, se debe dirigir a la carpeta contenedora del proyecto y ejecutar Apache Maven haciendo uso del archivo `pom.xml` con el siguiente comando:
 ```bash
 mvn package --file pom.xml
 ```
