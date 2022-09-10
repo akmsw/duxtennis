@@ -250,6 +250,13 @@ public class MatchSimulator {
       return;
     }
 
+    if (match.isTie5() || match.isTie6()) {
+      match.setTie5(false);
+      match.setTie6(false);
+
+      gamesToWinSet = Match.GAMES_TO_WIN_SET;
+    }
+
     whoServes(false);
 
     ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).updateTable();
