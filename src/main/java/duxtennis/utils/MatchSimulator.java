@@ -102,17 +102,14 @@ public class MatchSimulator {
                                .collect(Collectors.toList())
                                .get(0);
 
+      Player newServer = match.getPlayers()
+                              .get(1 - match.getPlayers()
+                                            .indexOf(lastServer));
+
       lastServer.setServes(false);
+      newServer.setServes(true);
 
-      match.getPlayers()
-           .get(1 - match.getPlayers()
-                         .indexOf(lastServer))
-           .setServes(true);
-
-      ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH))
-          .drawServer(match.getPlayers()
-                           .get(1 - match.getPlayers()
-                                         .indexOf(lastServer)));
+      ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH)).drawServer(newServer);
     }
   }
 
@@ -189,12 +186,26 @@ public class MatchSimulator {
 
     gameWinner.setGamesWon(gamesWon);
 
-    if (isTie(gameWinner, gameLoser, 5)) {
-      match.setTie5(true);
+    if (gameWinner.getGamesWon() < Match.GAMES_TO_WIN_SET) {
+      if (isTie(gameWinner, gameLoser, Match.GAMES_TO_WIN_SET - 1)) {
+        match.setTie5(true);
+
+        gamesToWinSet = Match.GAMES_TO_WIN_SET + 1;
+      } else if (isTie(gameWinner, gameLoser, Match.GAMES_TO_WIN_SET)) {
+        match.setTie6(true);
+        match.setTie5(!match.isTie5());
+
+        gamesToWinSet = Match.GAMES_TO_WIN_SET + 7;
+      }
     }
 
-    if (gamesWon == gamesToWinSet) {
+    if (gameWinner.getGamesWon() == gamesToWinSet) {
+      if (isTie(gameWinner, gameLoser, gamesToWinSet)) {
+
+      }
+
       playerWonSet(gameWinner, gameLoser);
+
       return;
     }
 
