@@ -21,7 +21,7 @@ public class MatchSimulator {
 
   // ---------------------------------------- Private constants ---------------------------------
 
-  private static final int TIMER_DELAY_MS = 100;
+  private static final int TIMER_DELAY_MS = 500;
 
   // ---------------------------------------- Private fields ------------------------------------
 

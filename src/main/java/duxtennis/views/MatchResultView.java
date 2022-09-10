@@ -119,7 +119,8 @@ public class MatchResultView extends View {
    */
   private void addTable() {
     table = new JTable(2, Main.getMatch()
-                              .getSetsAmount() + 1);
+                              .getFinishedSets()
+                              .size() + 1);
 
     setTableFormat();
 

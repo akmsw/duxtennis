@@ -158,7 +158,8 @@ public class MatchResultController extends Controller {
 
 
     for (int i = 0; i < Main.getMatch()
-                            .getSetsAmount(); i++) {
+                            .getFinishedSets()
+                            .size(); i++) {
       Set set = Main.getMatch()
                     .getFinishedSets()
                     .get(i);
