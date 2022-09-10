@@ -69,10 +69,10 @@ public class CurrentMatchController extends Controller {
     Main.getMatch()
         .getPlayers()
         .forEach(p -> {
-          if (p.getGamesWon() > Match.GAMES_TO_WIN_SET + 1) {
+          if (p.getGamesWon() > Match.GAMES_TO_WIN_SET) {
             ((CurrentMatchView) getView()).getTable()
                                           .setValueAt(Match.GAMES_TO_WIN_SET + " ("
-                                                    + (p.getGamesWon() - Match.GAMES_TO_WIN_SET + 1)
+                                                      + (p.getGamesWon() - Match.GAMES_TO_WIN_SET)
                                                       + ")",
                                                       Main.getMatch()
                                                           .getPlayers()

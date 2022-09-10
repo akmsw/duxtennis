@@ -2,7 +2,6 @@ package duxtennis.views;
 
 import duxtennis.Main;
 import duxtennis.controllers.MatchResultController;
-import duxtennis.models.Set;
 import duxtennis.models.Views;
 import java.awt.Color;
 import java.awt.Component;
@@ -123,7 +122,6 @@ public class MatchResultView extends View {
                               .getSetsAmount() + 1);
 
     setTableFormat();
-    fillTable();
 
     panel.add(table, "growx, span");
   }
@@ -180,28 +178,6 @@ public class MatchResultView extends View {
       table.getColumnModel()
            .getColumn(column)
            .setPreferredWidth(Main.TABLE_CELLS_WIDTH);
-    }
-  }
-
-  /**
-   * Fills the match result table with the sets results.
-   */
-  private void fillTable() {
-    for (int i = 0; i < 2; i++) {
-      table.setValueAt(Main.getMatch()
-                           .getPlayers()
-                           .get(i)
-                           .getName(), i, 0);
-    }
-
-    for (int i = 0; i < Main.getMatch()
-                            .getSetsAmount(); i++) {
-      Set set = Main.getMatch()
-                    .getFinishedSets()
-                    .get(i);
-
-      table.setValueAt(set.getLoserWonGames(), set.getLoserIndex(), i + 1);
-      table.setValueAt(set.getWinnerWonGames(), set.getWinnerIndex(), i + 1);
     }
   }
 }

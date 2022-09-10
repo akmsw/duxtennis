@@ -2,6 +2,7 @@ package duxtennis.controllers;
 
 import duxtennis.Main;
 import duxtennis.models.Player;
+import duxtennis.models.Set;
 import duxtennis.models.Views;
 import duxtennis.views.DataInputView;
 import duxtennis.views.MatchResultView;
@@ -133,8 +134,37 @@ public class MatchResultController extends Controller {
                                           + Main.getMatch().getTournamentName()
                                           + "\": " + winnerName);
 
+    fillTable();
     getView().pack();
     getView().setLocationRelativeTo(null);
     getView().setVisible(true);
+  }
+
+  /**
+   * Fills the match result table with the sets results.
+   */
+  private void fillTable() {
+    for (int i = 0; i < 2; i++) {
+      ((MatchResultView) getView()).getTable()
+                                   .setValueAt(Main.getMatch()
+                                                   .getPlayers()
+                                                   .get(i)
+                                                   .getName(), i, 0);
+    }
+
+    for (int i = 0; i < Main.getMatch()
+                            .getSetsAmount(); i++) {
+      Set set = Main.getMatch()
+                    .getFinishedSets()
+                    .get(i);
+
+      ((MatchResultView) getView()).getTable()
+                                   .setValueAt(set.getLoserWonGames(),
+                                               set.getLoserIndex(), i + 1);
+
+      ((MatchResultView) getView()).getTable()
+                                   .setValueAt(set.getWinnerWonGames(),
+                                               set.getWinnerIndex(), i + 1);
+    }
   }
 }
