@@ -15,6 +15,8 @@ public class Match {
   // ---------------------------------------- Private fields ------------------------------------
 
   private boolean deuce;
+  private boolean tie5;
+  private boolean tie6;
 
   private int setsAmount;
 
@@ -68,6 +70,24 @@ public class Match {
   }
 
   /**
+   * Returns whether the match is in a tie with 5 games.
+   *
+   * @return Whether the match is in a tie with 5 games.
+   */
+  public boolean isTie5() {
+    return tie5;
+  }
+
+  /**
+   * Returns whether the match is in a tie with 6 games.
+   *
+   * @return Whether the match is in a tie with 6 games.
+   */
+  public boolean isTie6() {
+    return tie6;
+  }
+
+  /**
    * Gets the match sets amount.
    *
    * @return The match sets amount.
@@ -110,7 +130,7 @@ public class Match {
    *
    * @param deuce The deuce flag new state.
    */
-  private void setDeuce(boolean deuce) {
+  public void setDeuce(boolean deuce) {
     this.deuce = deuce;
   }
 

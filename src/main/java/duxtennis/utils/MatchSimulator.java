@@ -21,7 +21,7 @@ public class MatchSimulator {
 
   // ---------------------------------------- Private constants ---------------------------------
 
-  private static final int TIMER_DELAY_MS = 50;
+  private static final int TIMER_DELAY_MS = 500;
 
   // ---------------------------------------- Private fields ------------------------------------
 
@@ -130,12 +130,22 @@ public class MatchSimulator {
                                                      .get(0)
                                                      .getSkillPoints() / 100) ? 0 : 1);
 
+    Player pointLoser = match.getPlayers()
+                             .get(1 - match.getPlayers()
+                                           .indexOf(pointWinner));
+
     int playerGamePoints = pointWinner.getGamePoints() + 15;
 
     if (playerGamePoints == 45) {
       playerGamePoints = 40;
-    } else if (playerGamePoints > 40) {
-      playerWonGame(pointWinner);
+
+      if (haveSamePoints(pointWinner, pointLoser, playerGamePoints)) {
+        match.setDeuce(true);
+      }
+    }
+
+    if (playerGamePoints > 40) {
+      playerWonGame(pointWinner, pointLoser);
       return;
     }
 
@@ -153,22 +163,19 @@ public class MatchSimulator {
    *
    * <p>Finally, the table data is updated.
    *
-   * @param winner The game winner.
+   * @param gameWinner The game winner.
+   * @param gameLoser The game loser.
    */
-  private void playerWonGame(Player gameWinner) {
+  private void playerWonGame(Player gameWinner, Player gameLoser) {
     gameWinner.setGamePoints(0);
-
-    match.getPlayers()
-         .get(1 - match.getPlayers()
-                       .indexOf(gameWinner))
-         .setGamePoints(0);
+    gameLoser.setGamePoints(0);
 
     int gamesWon = gameWinner.getGamesWon() + 1;
 
     gameWinner.setGamesWon(gamesWon);
 
     if (gamesWon == 6) {
-      playerWonSet(gameWinner);
+      playerWonSet(gameWinner, gameLoser);
       return;
     }
 
@@ -186,12 +193,9 @@ public class MatchSimulator {
    * is updated.
    *
    * @param setWinner The set winner.
+   * @param setLoser The set loser.
    */
-  private void playerWonSet(Player setWinner) {
-    Player setLoser = match.getPlayers()
-                           .get(1 - match.getPlayers()
-                                         .indexOf(setWinner));
-
+  private void playerWonSet(Player setWinner, Player setLoser) {
     match.addFinishedSet(new Set(setWinner));
 
     setWinner.setGamesWon(0);
@@ -249,5 +253,18 @@ public class MatchSimulator {
                                                  .get(1 - match.getPlayers()
                                                  .indexOf(setWinner))
                                                  .getSetsWon());
+  }
+
+  /**
+   * Bla.
+   *
+   * @param player1 Bla.
+   * @param player1 Bla.
+   * @param points  Bla.
+   *
+   * @return Bla.
+   */
+  private boolean haveSamePoints(Player player1, Player player2, int points) {
+    return player1.getGamePoints() == points && player1.getGamePoints() == player2.getGamePoints();
   }
 }
