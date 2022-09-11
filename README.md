@@ -20,7 +20,7 @@
     - [Versión recomendada](https://github.com/akmsw/duxtennis#versi%C3%B3n-recomendada-1)
 - [Descarga](https://github.com/akmsw/duxtennis#-descarga)
 - [Instalación y ejecución](https://github.com/akmsw/duxtennis#%EF%B8%8F-instalaci%C3%B3n-y-ejecuci%C3%B3n)
-- [Compilación manual](https://github.com/akmsw/duxtennis#-compilaci%C3%B3n-manual)
+- [Compilación manual](https://github.com/akmsw/duxtennis#%EF%B8%8F-compilaci%C3%B3n-manual)
 - [¿Cómo se usa?](https://github.com/akmsw/duxtennis#-c%C3%B3mo-se-usa)
 - [Reglas del juego](https://github.com/akmsw/duxtennis#-reglas-del-juego)
 - [Comentarios](https://github.com/akmsw/duxtennis#-comentarios)
