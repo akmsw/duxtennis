@@ -8,10 +8,8 @@ import java.awt.Toolkit;
  * interaction between controllers and their assigned views.
  *
  * @author Bonino, Francisco Ignacio.
- *
  * @version 0.0.1
- *
- * @since 28/07/2022
+ * @since 07/09/2022
  */
 public abstract class Controller {
 

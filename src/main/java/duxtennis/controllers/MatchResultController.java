@@ -156,7 +156,6 @@ public class MatchResultController extends Controller {
                                                    .getName(), i, 0);
     }
 
-
     for (int i = 0; i < Main.getMatch()
                             .getFinishedSets()
                             .size(); i++) {

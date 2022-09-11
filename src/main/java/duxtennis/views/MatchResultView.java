@@ -38,7 +38,7 @@ public class MatchResultView extends View {
   // ---------------------------------------- Constructor ---------------------------------------
 
   /**
-   * Construye una ventana de resultados.
+   * Builds the match result view.
    */
   public MatchResultView() {
     // No body needed
@@ -72,6 +72,11 @@ public class MatchResultView extends View {
     return titleLabel;
   }
 
+  /**
+   * Gets the results table.
+   *
+   * @return The results table.
+   */
   public JTable getTable() {
     return table;
   }
@@ -79,7 +84,7 @@ public class MatchResultView extends View {
   // ---------------------------------------- Protected methods ---------------------------------
 
   /**
-   * Adds the buttons to their corresponding panel.
+   * Adds the buttons to the panel.
    */
   @Override
   protected void addButtons() {
@@ -101,7 +106,7 @@ public class MatchResultView extends View {
   // ---------------------------------------- Private methods -----------------------------------
 
   /**
-   * Adds the title label in the view panel.
+   * Adds the title label to the panel.
    */
   private void addLabel() {
     titleLabel = new JLabel();
@@ -115,7 +120,7 @@ public class MatchResultView extends View {
   }
 
   /**
-   * Adds the results table in the view panel.
+   * Adds the results table to the panel.
    */
   private void addTable() {
     table = new JTable(2, Main.getMatch()

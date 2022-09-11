@@ -35,7 +35,7 @@ public class Match {
   // ---------------------------------------- Constructor ---------------------------------------
 
   /**
-   * Match constructor.
+   * Builds a basic match with empty data.
    *
    * @param player1        Player 1.
    * @param player2        Player 2.
@@ -163,21 +163,21 @@ public class Match {
   }
 
   /**
-   * Updates the tie break flag.
-   *
-   * @param tieBreak The tie break flag new value.
-   */
-  public void setTieBreak(boolean tieBreak) {
-    this.tieBreak = tieBreak;
-  }
-
-  /**
    * Updates the 6-games tie flag.
    *
    * @param tie6 The 6-games tie flag new value.
    */
   public void setTie6(boolean tie6) {
     this.tie6 = tie6;
+  }
+
+  /**
+   * Updates the tie break flag.
+   *
+   * @param tieBreak The tie break flag new value.
+   */
+  public void setTieBreak(boolean tieBreak) {
+    this.tieBreak = tieBreak;
   }
 
   /**

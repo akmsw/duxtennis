@@ -170,8 +170,8 @@ public class MatchSimulator {
    * Resets the players game points to 0 and increases by 1
    * the won games amount of the finished game winner.
    *
-   * <p>If the amount of games won by the winner is 6, then
-   * the winner is flagged as the set winner.
+   * <p>The game winner is established according to the game
+   * rules explained in the README.md file.
    *
    * <p>Finally, the table data is updated.
    *
@@ -225,6 +225,9 @@ public class MatchSimulator {
    * number of sets entered in the data input view, then the match
    * is finished. If not, a new server is chosen and the table data
    * is updated.
+   *
+   * <p>The set winner is established according to the game rules
+   * explained in the README.md file.
    *
    * @param setWinner The set winner.
    * @param setLoser The set loser.

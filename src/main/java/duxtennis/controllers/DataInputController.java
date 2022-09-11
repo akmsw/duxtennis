@@ -81,7 +81,8 @@ public class DataInputController extends Controller {
    *
    * <p>If the input is valid, it will be applied as a player name or as the tournament name.
    *
-   * @param text The user input in the text field.
+   * @param text    The user input in the text field.
+   * @param tfIndex The text field index in the text fields list.
    *
    * @throws IllegalArgumentException When the input is an invalid string.
    * @throws InvalidNameException     When the input is an invalid name.
@@ -172,8 +173,7 @@ public class DataInputController extends Controller {
    *
    * @param name The name to validate.
    *
-   * @return If the given name is valid according to
-   *         the specified conditions.
+   * @return If the given name is valid according to the specified conditions.
    */
   private boolean validName(String name) {
     return name.length() <= Main.MAX_NAME_LEN && !name.isBlank()

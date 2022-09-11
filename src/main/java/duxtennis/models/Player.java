@@ -26,7 +26,7 @@ public class Player {
   /**
    * Builds a basic player with the received parameters.
    *
-   * @param name     Player name.
+   * @param name Player name.
    */
   public Player(String name) {
     setName(name);

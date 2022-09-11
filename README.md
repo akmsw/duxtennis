@@ -50,7 +50,7 @@ Más allá de los requisitos listados, no hace falta ninguna instalación para c
 Una vez descargado el archivo con extensión ***.jar***, e independientemente del sistema operativo que se utilice, se lo puede ejecutar con un simple *doble click*.
 Una alternativa es abrir una terminal dentro de la carpeta contenedora del archivo y ejecutar el comando:
 ```bash
-java -jar nombre_del_archivo.jar
+java -jar duxtennis-0.1.jar
 ```
 
 ## 🛠️ Compilación manual

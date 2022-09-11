@@ -165,6 +165,7 @@ public class CurrentMatchController extends Controller {
     ((CurrentMatchView) getView()).getTournamentNameLabel()
                                   .setText("Torneo \"" + Main.getMatch()
                                                              .getTournamentName() + "\"");
+
     getView().pack();
     getView().setLocationRelativeTo(null);
     getView().setVisible(true);

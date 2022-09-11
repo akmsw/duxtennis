@@ -43,7 +43,7 @@ public class DataInputView extends View {
 
   private JComboBox<String> comboBox;
 
-  private JPanel masterPanel;
+  private JPanel panel;
 
   private List<JSlider> sliders;
   private List<JTextField> textFields;
@@ -104,13 +104,13 @@ public class DataInputView extends View {
    */
   @Override
   protected void initializeInterface() {
-    masterPanel = new JPanel(new MigLayout("wrap 2"));
+    panel = new JPanel(new MigLayout("wrap 2"));
 
     addTextFields();
     addSliders();
     addComboBox();
     addButtons();
-    add(masterPanel);
+    add(panel);
     setResizable(false);
     setTitle(FRAME_TITLE);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -120,7 +120,7 @@ public class DataInputView extends View {
   }
 
   /**
-   * Adds the buttons to their corresponding panel.
+   * Adds the buttons to the panel.
    */
   @Override
   protected void addButtons() {
@@ -137,14 +137,14 @@ public class DataInputView extends View {
         ((DataInputController) Main.getController(Views.DATA_INPUT)).continueButtonEvent()
     );
 
-    masterPanel.add(continueButton, GROWX_SPAN);
-    masterPanel.add(backButton, GROWX_SPAN);
+    panel.add(continueButton, GROWX_SPAN);
+    panel.add(backButton, GROWX_SPAN);
   }
 
   // ---------------------------------------- Private methods -----------------------------------
 
   /**
-   * Creates and places the parameters input text fields.
+   * Creates and places the parameters input text fields to the panel.
    */
   private void addTextFields() {
     textFields = new ArrayList<>();
@@ -185,13 +185,13 @@ public class DataInputView extends View {
         }
       });
 
-      masterPanel.add(label);
-      masterPanel.add(tf, GROWX);
+      panel.add(label);
+      panel.add(tf, GROWX);
     }
   }
 
   /**
-   * Creates and places the parameters input sliders.
+   * Creates and places the parameters input sliders to the panel.
    */
   private void addSliders() {
     List<JLabel> skillLabels = new ArrayList<>();
@@ -215,10 +215,10 @@ public class DataInputView extends View {
       skillLabels.get(i)
                  .setText(slider.getValue() + "%");
 
-      masterPanel.add(new JSeparator(), GROWX_SPAN);
-      masterPanel.add(label);
-      masterPanel.add(skillLabels.get(i));
-      masterPanel.add(slider, "align center, growx, span");
+      panel.add(new JSeparator(), GROWX_SPAN);
+      panel.add(label);
+      panel.add(skillLabels.get(i));
+      panel.add(slider, "align center, growx, span");
 
       sliders.add(slider);
     }
@@ -247,7 +247,7 @@ public class DataInputView extends View {
   }
 
   /**
-   * Creates and places the game sets amount combobox.
+   * Creates and places the game sets amount combobox to the panel.
    */
   private void addComboBox() {
     comboBox = new JComboBox<>(OPTIONS_COMBOBOX);
@@ -256,9 +256,9 @@ public class DataInputView extends View {
 
     JLabel setsAmountLabel = new JLabel("Cantidad de sets:");
 
-    masterPanel.add(new JSeparator(), GROWX_SPAN);
-    masterPanel.add(setsAmountLabel);
-    masterPanel.add(comboBox, GROWX);
+    panel.add(new JSeparator(), GROWX_SPAN);
+    panel.add(setsAmountLabel);
+    panel.add(comboBox, GROWX);
   }
 
   /**

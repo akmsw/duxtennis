@@ -91,7 +91,7 @@ public class CurrentMatchView extends View {
   // ---------------------------------------- Protected methods ---------------------------------
 
   /**
-   * Adds the buttons to their corresponding panel.
+   * Adds the buttons to the panel.
    */
   @Override
   protected void addButtons() {
@@ -101,7 +101,7 @@ public class CurrentMatchView extends View {
   // ---------------------------------------- Private methods -----------------------------------
 
   /**
-   * Adds the current match results table in the view panel.
+   * Adds the current match results table to the panel.
    */
   private void addTable() {
     tournamentNameLabel = new JLabel();
@@ -186,7 +186,7 @@ public class CurrentMatchView extends View {
   }
 
   /**
-   * Adds the informative label in the view panel.
+   * Adds the informative label to the panel.
    */
   private void addLabel() {
     JLabel label = new JLabel("Partido en curso...");

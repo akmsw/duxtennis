@@ -28,7 +28,7 @@ public class MainMenuView extends View {
 
   // ---------------------------------------- Private fields ------------------------------------
 
-  private JPanel masterPanel;
+  private JPanel panel;
 
   // ---------------------------------------- Constructor ---------------------------------------
 
@@ -46,11 +46,11 @@ public class MainMenuView extends View {
    */
   @Override
   protected void initializeInterface() {
-    masterPanel = new JPanel(new MigLayout("wrap"));
+    panel = new JPanel(new MigLayout("wrap"));
 
     addBackground();
     addButtons();
-    add(masterPanel);
+    add(panel);
     setResizable(false);
     setTitle(FRAME_TITLE);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -60,7 +60,7 @@ public class MainMenuView extends View {
   }
 
   /**
-   * Adds the buttons to their corresponding panel.
+   * Adds the buttons to the panel.
    */
   @Override
   protected void addButtons() {
@@ -73,8 +73,8 @@ public class MainMenuView extends View {
 
     exitButton.addActionListener(e -> System.exit(0));
 
-    masterPanel.add(startButton, GROWX);
-    masterPanel.add(exitButton, GROWX);
+    panel.add(startButton, GROWX);
+    panel.add(exitButton, GROWX);
   }
 
   // ---------------------------------------- Private methods -----------------------------------
@@ -89,6 +89,6 @@ public class MainMenuView extends View {
 
     JLabel bgLabel = new JLabel("", bgImage, SwingConstants.CENTER);
 
-    masterPanel.add(bgLabel, GROWX);
+    panel.add(bgLabel, GROWX);
   }
 }
