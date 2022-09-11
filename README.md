@@ -1,4 +1,4 @@
-# 🎾 DuxTennis
+# 🎾 DuxTennis v0.1
 
 [![build](https://github.com/akmsw/duxtennis/actions/workflows/maven.yml/badge.svg?branch=develop)](https://github.com/akmsw/duxtennis/actions/workflows/maven.yml)
 [![issuesBadge](https://img.shields.io/github/issues/akmsw/duxtennis.svg?logo=github)](https://github.com/akmsw/duxtennis/issues)
@@ -65,7 +65,7 @@ mvn package
 
 Esto creará una carpeta llamada `target`. Dentro de esa carpeta estará el archivo ejecutable en formato `.jar`. Para ejecutarlo, dentro de la carpeta contenedora, se debe ejecutar el comando indicado anteriormente:
 ```bash
-java -jar nombre_del_archivo.jar
+java -jar duxtennis-0.1.jar
 ```
 
 ## 📝 ¿Cómo se usa?
