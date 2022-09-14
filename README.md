@@ -24,6 +24,7 @@
 - [¿Cómo se usa?](https://github.com/akmsw/duxtennis#-c%C3%B3mo-se-usa)
 - [Reglas del juego](https://github.com/akmsw/duxtennis#-reglas-del-juego)
 - [Comentarios](https://github.com/akmsw/duxtennis#-comentarios)
+- [Reportes y sugerencias](https://github.com/akmsw/duxtennis#%EF%B8%8F-reportes-y-sugerencias)
 - [Capturas de pantalla](https://github.com/akmsw/duxtennis#-capturas-de-pantalla)
 
 ## 🔎 ¿Qué es?
@@ -98,6 +99,9 @@ Como simple recordatorio, se detallan a continuación las reglas básicas de un 
 ## 💬 Comentarios
 - En la ventana de ingreso de parámetros, el botón 'Continuar' está deshabilitado al comienzo. Para habilitarlo, es necesario ingresar todos los nombres pedidos (escribir en el campo de texto y presionar la tecla 'Enter').
 - Los nombres de los jugadores y del torneo deben estar escritos sólo con letras de la A la Z (incluyendo la Ñ), en mayúscula o minúscula, con o sin acentos, con o sin espacios, sin más de 10 caracteres en total.
+
+## ⚠️ Reportes y sugerencias
+Si el programa presenta algún error que debería ser reportado para arreglarlo, si podría haber alguna nueva funcionalidad para agregar al programa, o si algo podría ser modificado, la sección de [issues](https://github.com/akmsw/duxtennis/issues) está abierta para hacer estos reportes y/o sugerencias. Es necesario tener una cuenta en GitHub para abrir un nuevo reporte en el repositorio. Para poder trabajar en eso lo más rápidamente posible, se proveen unas plantillas para cada caso donde se pide toda la información necesaria.
 
 ## 📸 Capturas de pantalla
 ![mainMenu](./src/main/res/img/readme/ss1.png)\
