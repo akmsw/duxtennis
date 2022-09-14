@@ -37,20 +37,18 @@ public class Match {
   /**
    * Builds a basic match with empty data.
    *
-   * @param player1        Player 1.
-   * @param player2        Player 2.
-   * @param tournamentName The tournament name.
-   * @param setsAmount     The match sets amount.
+   * @param player1 Player 1.
+   * @param player2 Player 2.
    */
-  public Match(Player player1, Player player2, String tournamentName, int setsAmount) {
+  public Match(Player player1, Player player2) {
     finishedSets = new ArrayList<>();
     players = new ArrayList<>();
 
     players.add(player1);
     players.add(player2);
 
-    setTournamentName(tournamentName);
-    setMatchSetsAmount(setsAmount);
+    setTournamentName("");
+    setMatchSetsAmount(0);
     setDeuce(false);
     setTie5(false);
     setTie6(false);

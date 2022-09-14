@@ -14,7 +14,7 @@ public abstract class View extends JFrame {
   // ---------------------------------------- Abstract protected methods ------------------------
 
   /**
-   * Initializes the view and makes it visible.
+   * Initializes the view.
    */
   protected abstract void initializeInterface();
 

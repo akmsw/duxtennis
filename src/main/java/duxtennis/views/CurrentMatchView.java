@@ -65,7 +65,8 @@ public class CurrentMatchView extends View {
     setResizable(false);
     setTitle(FRAME_TITLE);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setIconImage(Main.ICON.getImage());
+    setIconImage(Main.ICON
+                     .getImage());
   }
 
   // --------------------------------------------- Getters --------------------------------------

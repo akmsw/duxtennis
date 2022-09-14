@@ -24,7 +24,7 @@ public class MainMenuView extends View {
 
   private static final String BG_IMG_FILENAME = "bg.png";
   private static final String GROWX = "growx";
-  private static final String FRAME_TITLE = Main.PROGRAM_TITLE;
+  private static final String FRAME_TITLE = Main.PROGRAM_TITLE + Main.PROGRAM_VERSION;
 
   // ---------------------------------------- Private fields ------------------------------------
 

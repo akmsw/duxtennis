@@ -39,6 +39,8 @@ public class MatchSimulator {
 
   /**
    * Builds the match simulator.
+   *
+   * @param match The match object to use in the simulation.
    */
   public MatchSimulator(Match match) {
     this.match = match;
@@ -85,12 +87,12 @@ public class MatchSimulator {
       int serverIndex = randomGenerator.nextInt(2);
 
       match.getPlayers()
-          .get(serverIndex)
-          .setServes(true);
+           .get(serverIndex)
+           .setServes(true);
 
       match.getPlayers()
-          .get(1 - serverIndex)
-          .setServes(false);
+           .get(1 - serverIndex)
+           .setServes(false);
 
       ((CurrentMatchController) Main.getController(Views.CURRENT_MATCH))
           .drawServer(match.getPlayers()
@@ -284,6 +286,7 @@ public class MatchSimulator {
    * with 3-0 or 3-1 in a 5 sets match.
    *
    * @param setWinner The set winner.
+   * @param setLoser  The set loser.
    *
    * @return Whether the match endind conditions are met.
    */
@@ -298,14 +301,14 @@ public class MatchSimulator {
    * Checks whether both players have the same
    * specified number in a field.
    *
-   * @param player1 Player 1 field to check.
-   * @param player1 Player 2 field to check.
-   * @param points  Reference to use.
+   * @param player1Field Player 1 field to check.
+   * @param player2Field Player 2 field to check.
+   * @param reference    Reference to use.
    *
    * @return Whether both players have the same specified number in a field.
    */
-  private boolean checkDraw(int player1Points, int player2Points, int reference) {
-    return player1Points == reference
-           && player1Points == player2Points;
+  private boolean checkDraw(int player1Field, int player2Field, int reference) {
+    return player1Field == reference
+           && player1Field == player2Field;
   }
 }

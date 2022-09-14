@@ -73,7 +73,7 @@ Para comenzar un partido, se debe ingresar el nombre del torneo y de los dos jug
 
 Cuando estos parámetros hayan sido establecidos, se podrá hacer click en el botón 'Continuar' para comenzar la simulación.
 
-En ese momento se abrirá una ventana que mostrará el progreso de la simulación del partido, indicando cuántos puntos, games y sets ganados tiene cada jugador en el transcurso del mismo. Durante esta simulación, el usuario sólo puede observar el progreso.
+En ese momento se abrirá una ventana que mostrará el progreso de la simulación del partido, indicando quién saca en cada set, y cuántos puntos, games y sets ganados tiene cada jugador en el transcurso del mismo. Durante esta simulación, el usuario sólo puede observar el progreso de la simulación.
 
 Cuando la simulación finalice, el usuario tendrá frente a sí una nueva ventana que mostrará el resumen del partido, indicando el resultado de cada set y el ganador del partido del torneo. En este punto, el usuario puede optar por jugar una revancha (iniciar un partido con los mismos jugadores y los mismos parámetros que los ingresados en un principio), o volver al menú principal para comenzar otra simulación distinta.
 
@@ -96,7 +96,8 @@ Como simple recordatorio, se detallan a continuación las reglas básicas de un 
 - Si el partido es a 5 sets y un jugador gana 3 sets y el otro sólo 1, el quinto set no se jugará.
 
 ## 💬 Comentarios
-En la ventana de ingreso de parámetros, el botón 'Continuar' está deshabilitado al comienzo. Para habilitarlo, es necesario ingresar todos los nombres pedidos (escribir en el campo de texto y presionar la tecla 'Enter').
+- En la ventana de ingreso de parámetros, el botón 'Continuar' está deshabilitado al comienzo. Para habilitarlo, es necesario ingresar todos los nombres pedidos (escribir en el campo de texto y presionar la tecla 'Enter').
+- Los nombres de los jugadores y del torneo deben estar escritos sólo con letras de la A la Z (incluyendo la Ñ), en mayúscula o minúscula, con o sin acentos, con o sin espacios, sin más de 10 caracteres en total.
 
 ## 📸 Capturas de pantalla
 ![mainMenu](./src/main/res/img/readme/ss1.png)\

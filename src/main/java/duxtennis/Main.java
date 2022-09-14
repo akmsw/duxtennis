@@ -50,6 +50,7 @@ public final class Main {
   public static final String IMG_PATH = "img/";
   public static final String NAMES_VALIDATION_REGEX = "[a-z A-ZÁÉÍÓÚáéíóúñÑ]+";
   public static final String PROGRAM_TITLE = "DuxTennis";
+  public static final String PROGRAM_VERSION = "v0.1";
 
   /**
    * Program icon.
@@ -141,7 +142,7 @@ public final class Main {
    * Creates an empty match.
    */
   private static final void setupMatch() {
-    match = new Match(new Player(""), new Player(""), "", 0);
+    match = new Match(new Player(""), new Player(""));
   }
 
   /**

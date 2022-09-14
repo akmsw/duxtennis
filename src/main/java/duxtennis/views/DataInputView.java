@@ -114,7 +114,8 @@ public class DataInputView extends View {
     setResizable(false);
     setTitle(FRAME_TITLE);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setIconImage(Main.ICON.getImage());
+    setIconImage(Main.ICON
+                     .getImage());
     pack();
     setLocationRelativeTo(null);
   }
@@ -226,8 +227,8 @@ public class DataInputView extends View {
     sliders.get(0)
            .addChangeListener(e -> {
              sliders.get(1)
-                    .setValue(100 - sliders.get(0)
-                                           .getValue());
+                    .setValue(DataInputController.SLIDER_MAX - sliders.get(0)
+                                                                      .getValue());
 
              skillLabels.get(0)
                         .setText(sliders.get(0)
@@ -237,8 +238,8 @@ public class DataInputView extends View {
     sliders.get(1)
            .addChangeListener(e -> {
              sliders.get(0)
-                    .setValue(100 - sliders.get(1)
-                                           .getValue());
+                    .setValue(DataInputController.SLIDER_MAX - sliders.get(1)
+                                                                      .getValue());
 
              skillLabels.get(1)
                         .setText(sliders.get(1)
