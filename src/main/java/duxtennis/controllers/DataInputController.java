@@ -88,7 +88,8 @@ public class DataInputController extends Controller {
    * @throws InvalidNameException     When the input is an invalid name.
    */
   public void textFieldEvent(String text, int tfIndex)
-                             throws IllegalArgumentException, InvalidNameException {
+                             throws IllegalArgumentException,
+                                    InvalidNameException {
     if (!validString(text)) {
       throw new IllegalArgumentException();
     }
@@ -176,7 +177,8 @@ public class DataInputController extends Controller {
    * @return If the given name is valid according to the specified conditions.
    */
   private boolean validName(String name) {
-    return name.length() <= Main.MAX_NAME_LEN && !name.isBlank()
+    return name.length() <= Main.MAX_NAME_LEN
+           && !name.isBlank()
            && !name.isEmpty()
            && !alreadyExists(name);
   }

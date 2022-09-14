@@ -137,7 +137,7 @@ public class MatchSimulator {
     if (match.deuce()) {
       playerGamePoints = pointWinner.getGamePoints() + 1;
     } else {
-      playerGamePoints = pointWinner.getGamePoints() + 15;
+      playerGamePoints = pointWinner.getGamePoints() + Match.GAMES_STEP;
 
       if (playerGamePoints == 45) {
         playerGamePoints = 40;
