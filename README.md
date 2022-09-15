@@ -101,7 +101,7 @@ Como simple recordatorio, se detallan a continuación las reglas básicas de un 
 - Los nombres de los jugadores y del torneo deben estar escritos sólo con letras de la A la Z (incluyendo la Ñ), en mayúscula o minúscula, con o sin acentos, con o sin espacios, sin más de 10 caracteres en total.
 
 ## ⚠️ Reportes y sugerencias
-Si el programa presenta algún error que debería ser reportado para arreglarlo, si podría haber alguna nueva funcionalidad para agregar al programa, o si algo podría ser modificado, la sección de [issues](https://github.com/akmsw/duxtennis/issues) está abierta para hacer estos reportes y/o sugerencias. Es necesario tener una cuenta en GitHub para abrir un nuevo reporte en el repositorio. Para poder trabajar en eso lo más rápidamente posible, se proveen unas plantillas para cada caso donde se pide toda la información necesaria.
+Si el programa presenta algún error que debería ser reportado para arreglarlo, si podría haber alguna nueva funcionalidad para agregar al programa, o si algo podría ser modificado, la sección de [issues](https://github.com/akmsw/duxtennis/issues) está abierta para hacer estos reportes y/o sugerencias. Es necesario tener una cuenta en GitHub para abrir un nuevo reporte en el repositorio.
 
 ## 📸 Capturas de pantalla
 ![mainMenu](./src/main/res/img/readme/ss1.png)\
